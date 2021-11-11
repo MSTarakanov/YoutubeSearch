@@ -23,6 +23,8 @@
 		090C43B0273CC933006D2FB5 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090C43AE273CC933006D2FB5 /* VideosTableViewCell.xib */; };
 		090C43B2273CDBDE006D2FB5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43B1273CDBDE006D2FB5 /* Credentials.swift */; };
 		090C43B6273D76B2006D2FB5 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43B5273D76B2006D2FB5 /* ModuleBuilder.swift */; };
+		090C43DA273DB0A3006D2FB5 /* NetworkYoutubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43D9273DB0A3006D2FB5 /* NetworkYoutubeManager.swift */; };
+		090C43DC273DB39B006D2FB5 /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43DB273DB39B006D2FB5 /* SearchResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		090C43AE273CC933006D2FB5 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideosTableViewCell.xib; sourceTree = "<group>"; };
 		090C43B1273CDBDE006D2FB5 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		090C43B5273D76B2006D2FB5 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		090C43D9273DB0A3006D2FB5 /* NetworkYoutubeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkYoutubeManager.swift; sourceTree = "<group>"; };
+		090C43DB273DB39B006D2FB5 /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		090C436C273C4BA2006D2FB5 /* YoutubeSearch */ = {
 			isa = PBXGroup;
 			children = (
+				090C43D7273DB054006D2FB5 /* Services */,
 				090C43B5273D76B2006D2FB5 /* ModuleBuilder.swift */,
 				090C43B3273D72DB006D2FB5 /* VideosModule */,
 				090C439F273CBCE8006D2FB5 /* Utilities */,
@@ -155,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				090C43AA273CC875006D2FB5 /* VideosModel.swift */,
+				090C43DB273DB39B006D2FB5 /* SearchResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +208,22 @@
 				090C436F273C4BA2006D2FB5 /* SceneDelegate.swift */,
 			);
 			path = Setup;
+			sourceTree = "<group>";
+		};
+		090C43D7273DB054006D2FB5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				090C43D8273DB073006D2FB5 /* NetworkServices */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		090C43D8273DB073006D2FB5 /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				090C43D9273DB0A3006D2FB5 /* NetworkYoutubeManager.swift */,
+			);
+			path = NetworkServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,8 +363,10 @@
 				090C43B6273D76B2006D2FB5 /* ModuleBuilder.swift in Sources */,
 				090C436E273C4BA2006D2FB5 /* AppDelegate.swift in Sources */,
 				090C439E273C518D006D2FB5 /* VideosViewController.swift in Sources */,
+				090C43DC273DB39B006D2FB5 /* SearchResponseModel.swift in Sources */,
 				090C4370273C4BA2006D2FB5 /* SceneDelegate.swift in Sources */,
 				090C43AB273CC875006D2FB5 /* VideosModel.swift in Sources */,
+				090C43DA273DB0A3006D2FB5 /* NetworkYoutubeManager.swift in Sources */,
 				090C43A9273CC85A006D2FB5 /* VideosPresenter.swift in Sources */,
 				090C43A2273CBD3A006D2FB5 /* Constants.swift in Sources */,
 			);
