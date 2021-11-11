@@ -37,4 +37,15 @@ struct Constants {
             static let shapes: UIColor = #colorLiteral(red: 0.1568627451, green: 0.1568627451, blue: 0.1568627451, alpha: 1)
         }
     }
+    
+    struct Network {
+        private init() {}
+        
+        static let baseUrl = ""
+        static let watchBaseUrl = ""
+        
+        static func urlToWatch(video id: String) -> String {
+            return watchBaseUrl + id
+        }
+    }
 }

@@ -21,6 +21,7 @@
 		090C43AB273CC875006D2FB5 /* VideosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43AA273CC875006D2FB5 /* VideosModel.swift */; };
 		090C43AF273CC933006D2FB5 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43AD273CC933006D2FB5 /* VideosTableViewCell.swift */; };
 		090C43B0273CC933006D2FB5 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090C43AE273CC933006D2FB5 /* VideosTableViewCell.xib */; };
+		090C43B2273CDBDE006D2FB5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43B1273CDBDE006D2FB5 /* Credentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		090C43AA273CC875006D2FB5 /* VideosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosModel.swift; sourceTree = "<group>"; };
 		090C43AD273CC933006D2FB5 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosTableViewCell.swift; sourceTree = "<group>"; };
 		090C43AE273CC933006D2FB5 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideosTableViewCell.xib; sourceTree = "<group>"; };
+		090C43B1273CDBDE006D2FB5 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			children = (
 				090C43A1273CBD3A006D2FB5 /* Constants.swift */,
 				090C43A3273CC070006D2FB5 /* Extensions.swift */,
+				090C43B1273CDBDE006D2FB5 /* Credentials.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				090C43A4273CC070006D2FB5 /* Extensions.swift in Sources */,
+				090C43B2273CDBDE006D2FB5 /* Credentials.swift in Sources */,
 				090C43AF273CC933006D2FB5 /* VideosTableViewCell.swift in Sources */,
 				090C436E273C4BA2006D2FB5 /* AppDelegate.swift in Sources */,
 				090C439E273C518D006D2FB5 /* VideosViewController.swift in Sources */,
