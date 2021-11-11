@@ -14,6 +14,7 @@ protocol NetworkYoutubeManagerProtocol {
 // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyANZhJ-amES3tz3iMFcuDPbuH1YjtkLYqQ
 class NetworkYoutubeManager: NetworkYoutubeManagerProtocol {
     
+    // MARK: Private helpers -
     private func getRequest(with query: String) -> URLRequest? {
         guard var urlComponents = URLComponents(string: Constants.Network.baseYotubeSearchUrl) else {
             print("[DEBUG] baseYotubeSearchUrl goes wrong!")
@@ -32,6 +33,7 @@ class NetworkYoutubeManager: NetworkYoutubeManagerProtocol {
         return URLRequest(url: url)
     }
     
+    // MARK: Requests -
     func getVideos(with query: String, completion: @escaping (Result<SearchResponseModel?, NetworkError>) -> Void) {
         guard let request = getRequest(with: query) else {
             print("[DEBUG] search request failed")
@@ -68,6 +70,8 @@ class NetworkYoutubeManager: NetworkYoutubeManagerProtocol {
         task.resume()
     }
 }
+
+// MARK: Error Handling -
 
 enum NetworkError: String, Error {
     case invalidRequest = "Sorry. You did invalid request"

@@ -10,7 +10,7 @@ import UIKit
 
 struct Constants {
     private init() {}
-    
+    // MARK: UI constants -
     struct UI {
         private init() {}
         
@@ -38,7 +38,7 @@ struct Constants {
             static let shapes: UIColor = #colorLiteral(red: 0.1568627451, green: 0.1568627451, blue: 0.1568627451, alpha: 1)
         }
     }
-    
+    // MARK: Network constants -
     struct Network {
         private init() {}
         

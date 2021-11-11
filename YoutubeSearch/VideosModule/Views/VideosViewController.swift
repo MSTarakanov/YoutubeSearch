@@ -11,6 +11,7 @@ class VideosViewController: UIViewController {
     
     var presenter: VideosPresenterProtocol!
     
+    // MARK: UI privates -
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = .default
@@ -28,6 +29,7 @@ class VideosViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: ViewController Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +44,7 @@ class VideosViewController: UIViewController {
         addConstraints()
     }
     
+    // MARK: Private func helpers -
     private func addConstraints() {
         
         NSLayoutConstraint.activate([
@@ -61,12 +64,14 @@ class VideosViewController: UIViewController {
     }
 }
 
+// MARK: VideosViewProtocol -
 extension VideosViewController: VideosViewProtocol {
     func showVideos(_ videos: [Video]) {
         print(videos)
     }
 }
 
+// MARK: SearchBarDelegate -
 extension VideosViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("[DEBUG] Search button at keyboard clicked")
