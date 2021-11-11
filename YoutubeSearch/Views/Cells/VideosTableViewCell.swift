@@ -10,6 +10,7 @@ import UIKit
 class VideosTableViewCell: UITableViewCell {
 
     static let identifier = "VideosTableViewCellIdentifier"
+    static let nib = UINib(nibName: "VideosTableViewCell", bundle: nil)
     
     @IBOutlet weak var VideoImageView: UIImageView!
     @IBOutlet weak var VideoTitleLabel: UILabel!
