@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="104" id="KGk-i7-Jjw" customClass="VideosTableViewCell" customModule="YoutubeSearch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="104"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="382" height="104"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AE4-wh-rcZ">
+                        <rect key="frame" x="10" y="10" width="112" height="84"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="AE4-wh-rcZ" secondAttribute="height" multiplier="4:3" id="dzN-MC-Icn"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4zf-SW-tqf">
+                        <rect key="frame" x="130" y="22.5" width="133" height="59"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VideoTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rB9-LQ-lO3">
+                                <rect key="frame" x="0.0" y="0.0" width="125" height="25.5"/>
+                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ChanelTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suY-7Q-bz0">
+                                <rect key="frame" x="0.0" y="33.5" width="133" height="25.5"/>
+                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Light" family="Kohinoor Devanagari" pointSize="18"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4zf-SW-tqf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6sh-xQ-yE0"/>
+                    <constraint firstItem="4zf-SW-tqf" firstAttribute="leading" secondItem="AE4-wh-rcZ" secondAttribute="trailing" constant="8" symbolic="YES" id="C1d-xj-s6C"/>
+                    <constraint firstItem="AE4-wh-rcZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="PV4-gd-RLy"/>
+                    <constraint firstAttribute="bottom" secondItem="AE4-wh-rcZ" secondAttribute="bottom" constant="10" id="c2c-Md-A67"/>
+                    <constraint firstItem="AE4-wh-rcZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tVJ-H5-uva"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ChanelTitleLabel" destination="suY-7Q-bz0" id="sXT-2z-qE9"/>
+                <outlet property="VideoImageView" destination="AE4-wh-rcZ" id="9lF-jI-gNR"/>
+                <outlet property="VideoTitleLabel" destination="rB9-LQ-lO3" id="Fnp-5v-kbz"/>
+            </connections>
+            <point key="canvasLocation" x="186.95652173913044" y="110.49107142857143"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
