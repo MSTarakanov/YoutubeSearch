@@ -34,8 +34,10 @@ class VideosViewController: UIViewController {
         view.backgroundColor = .white
         
         videosTableView.addSubview(searchBar)
-        
         view.addSubview(videosTableView)
+        
+        searchBar.delegate = self
+        
         addNavigationItemImage()
         addConstraints()
     }
@@ -62,5 +64,12 @@ class VideosViewController: UIViewController {
 extension VideosViewController: VideosViewProtocol {
     func showVideos(_ videos: [Video]) {
         print(videos)
+    }
+}
+
+extension VideosViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("[DEBUG] Search button at keyboard clicked")
+        presenter.searchVideos(with: searchBar.text ?? "")
     }
 }
