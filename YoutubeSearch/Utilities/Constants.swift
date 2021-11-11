@@ -14,6 +14,13 @@ struct Constants {
     struct UI {
         private init() {}
         
+        struct ImagesNames {
+            private init() {}
+            
+            static let logo = "logo"
+            static let logoWithText = "logo_with_text_vertical"
+        }
+        
         struct FontsNames {
             private init() {}
             
