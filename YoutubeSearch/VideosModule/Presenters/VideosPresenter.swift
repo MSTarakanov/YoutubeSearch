@@ -9,11 +9,11 @@ import UIKit
 
 // MARK: Protocols -
 protocol VideosViewProtocol: AnyObject {
-    func showVideos(_ videos: [Video])
+    func showVideos(_ videos: [VideoModel])
 }
 
 protocol VideosPresenterProtocol: AnyObject {
-    init(view: VideosViewProtocol, model: [Video])
+    init(view: VideosViewProtocol, model: [VideoModel])
     
     func searchVideos(with query: String)
 }
@@ -22,9 +22,9 @@ class VideosPresenter: VideosPresenterProtocol {
     
     // MARK: MVP setups -
     let view: VideosViewProtocol
-    let model: [Video]
+    let model: [VideoModel]
     
-    required init(view: VideosViewProtocol, model: [Video]) {
+    required init(view: VideosViewProtocol, model: [VideoModel]) {
         self.view = view
         self.model = model
     }

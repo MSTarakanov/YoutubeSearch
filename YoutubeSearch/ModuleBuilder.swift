@@ -13,7 +13,7 @@ protocol Builder {
 
 class ModuleBuilder: Builder {
     static func buildVideosModule() -> UIViewController {
-        let model = [Video]()
+        let model = [VideoModel]()
         let view = VideosViewController()
         let presenter = VideosPresenter(view: view, model: model)
         view.presenter = presenter

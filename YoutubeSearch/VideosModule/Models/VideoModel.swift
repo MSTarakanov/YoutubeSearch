@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Video {
+struct VideoModel {
     let videoID: String
     let title: String
     let channelTitle: String

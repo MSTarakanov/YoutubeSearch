@@ -66,7 +66,7 @@ class VideosViewController: UIViewController {
 
 // MARK: VideosViewProtocol -
 extension VideosViewController: VideosViewProtocol {
-    func showVideos(_ videos: [Video]) {
+    func showVideos(_ videos: [VideoModel]) {
         print(videos)
     }
 }
