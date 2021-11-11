@@ -11,6 +11,15 @@ class VideosViewController: UIViewController {
     
     var presenter: VideosPresenterProtocol!
     
+    private let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.searchBarStyle = .default
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search..."
+        searchBar.isTranslucent = false
+        return searchBar
+    }()
+    
     private let videosTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,12 +31,11 @@ class VideosViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        let navImageView = UIImageView()
-        navImageView.contentMode = .scaleAspectFit
-        navImageView.image = UIImage(named: Constants.UI.ImagesNames.logoWithTextVertical)
-        navigationItem.titleView = navImageView
-    
+        
+        videosTableView.addSubview(searchBar)
+        
         view.addSubview(videosTableView)
+        addNavigationItemImage()
         addConstraints()
     }
     
@@ -40,6 +48,13 @@ class VideosViewController: UIViewController {
             videosTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
         ])
     
+    }
+    
+    private func addNavigationItemImage() {
+        let navImageView = UIImageView()
+        navImageView.contentMode = .scaleAspectFit
+        navImageView.image = UIImage(named: Constants.UI.ImagesNames.logoWithTextVertical)
+        navigationItem.titleView = navImageView
     }
 }
 
