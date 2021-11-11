@@ -23,6 +23,7 @@ class VideosViewController: UIViewController {
     private let videosTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.contentInset = .init(top: 10, left: 0, bottom: 0, right: 0)
         tableView.register(VideosTableViewCell.nib, forCellReuseIdentifier: VideosTableViewCell.identifier)
         return tableView
     }()
