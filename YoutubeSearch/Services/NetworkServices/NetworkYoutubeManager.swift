@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkYoutubeManagerProtocol {
-    func getVideos(with query: String, completion: @escaping (Result<[Video]?, NetworkError>) -> Void)
+    func getVideos(with query: String, completion: @escaping (Result<SearchResponseModel?, NetworkError>) -> Void)
 }
 
 // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyANZhJ-amES3tz3iMFcuDPbuH1YjtkLYqQ
@@ -32,19 +32,47 @@ class NetworkYoutubeManager: NetworkYoutubeManagerProtocol {
         return URLRequest(url: url)
     }
     
-    func getVideos(with query: String, completion: @escaping (Result<[Video]?, NetworkError>) -> Void) {
+    func getVideos(with query: String, completion: @escaping (Result<SearchResponseModel?, NetworkError>) -> Void) {
         guard let request = getRequest(with: query) else {
             print("[DEBUG] search request failed")
             completion(.failure(.invalidRequest))
             return
         }
         
-        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("[DEBUG] error in dataTask: \(error.localizedDescription)")
+                completion(.failure(.dataTaskError))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                switch response.statusCode {
+                case 200..<300: break
+                default:
+                    print("[DEBUG] Bad response. Status code: \(response.statusCode)")
+                }
+            }
+            
+            if let data = data {
+                do {
+                    let searchResponseModel = try JSONDecoder().decode(SearchResponseModel.self, from: data)
+                    completion(.success(searchResponseModel))
+                } catch {
+                    print("[DEBUG] Bad data with error: \(error.localizedDescription)")
+                    completion(.failure(.badDataReceived))
+                    return
+                }
+            }
+        }
+        task.resume()
     }
 }
 
 enum NetworkError: String, Error {
     case invalidRequest = "Sorry. You did invalid request"
+    case dataTaskError = "Oops. Try again"
+    case badDataReceived = "Bad data received"
 }
 
 extension NetworkError: LocalizedError {
