@@ -44,5 +44,7 @@ class VideosViewController: UIViewController {
 }
 
 extension VideosViewController: VideosViewProtocol {
-    
+    func showVideos(_ videos: [Video]) {
+        print(videos)
+    }
 }

@@ -8,11 +8,13 @@
 import UIKit
 
 protocol VideosViewProtocol: AnyObject {
-    
+    func showVideos(_ videos: [Video])
 }
 
 protocol VideosPresenterProtocol: AnyObject {
     init(view: VideosViewProtocol, model: [Video])
+    
+    func searchVideos(with query: String)
 }
 
 class VideosPresenter: VideosPresenterProtocol {
@@ -25,4 +27,12 @@ class VideosPresenter: VideosPresenterProtocol {
         self.model = model
     }
     
+    func searchVideos(with query: String) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) { [weak self] in
+            var videos = [Video]()
+            videos.append(Video(title: "Harry Potter"))
+            videos.append(Video(title: "Pop Hover"))
+            self?.view.showVideos(videos)
+        }
+    }
 }
