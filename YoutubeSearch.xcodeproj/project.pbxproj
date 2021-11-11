@@ -14,7 +14,9 @@
 		090C4385273C4BA3006D2FB5 /* YoutubeSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C4384273C4BA3006D2FB5 /* YoutubeSearchTests.swift */; };
 		090C438F273C4BA3006D2FB5 /* YoutubeSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C438E273C4BA3006D2FB5 /* YoutubeSearchUITests.swift */; };
 		090C4391273C4BA3006D2FB5 /* YoutubeSearchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C4390273C4BA3006D2FB5 /* YoutubeSearchUITestsLaunchTests.swift */; };
-		090C439E273C518D006D2FB5 /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C439D273C518D006D2FB5 /* VideoListViewController.swift */; };
+		090C439E273C518D006D2FB5 /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C439D273C518D006D2FB5 /* VideosViewController.swift */; };
+		090C43A2273CBD3A006D2FB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43A1273CBD3A006D2FB5 /* Constants.swift */; };
+		090C43A4273CC070006D2FB5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43A3273CC070006D2FB5 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +48,9 @@
 		090C438A273C4BA3006D2FB5 /* YoutubeSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoutubeSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		090C438E273C4BA3006D2FB5 /* YoutubeSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchUITests.swift; sourceTree = "<group>"; };
 		090C4390273C4BA3006D2FB5 /* YoutubeSearchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		090C439D273C518D006D2FB5 /* VideoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
+		090C439D273C518D006D2FB5 /* VideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		090C43A1273CBD3A006D2FB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		090C43A3273CC070006D2FB5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +101,13 @@
 		090C436C273C4BA2006D2FB5 /* YoutubeSearch */ = {
 			isa = PBXGroup;
 			children = (
+				090C439F273CBCE8006D2FB5 /* Utilities */,
 				090C436D273C4BA2006D2FB5 /* AppDelegate.swift */,
 				090C436F273C4BA2006D2FB5 /* SceneDelegate.swift */,
 				090C4376273C4BA3006D2FB5 /* Assets.xcassets */,
 				090C4378273C4BA3006D2FB5 /* LaunchScreen.storyboard */,
 				090C437B273C4BA3006D2FB5 /* Info.plist */,
-				090C439D273C518D006D2FB5 /* VideoListViewController.swift */,
+				090C439D273C518D006D2FB5 /* VideosViewController.swift */,
 			);
 			path = YoutubeSearch;
 			sourceTree = "<group>";
@@ -122,6 +127,15 @@
 				090C4390273C4BA3006D2FB5 /* YoutubeSearchUITestsLaunchTests.swift */,
 			);
 			path = YoutubeSearchUITests;
+			sourceTree = "<group>";
+		};
+		090C439F273CBCE8006D2FB5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				090C43A1273CBD3A006D2FB5 /* Constants.swift */,
+				090C43A3273CC070006D2FB5 /* Extensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090C43A4273CC070006D2FB5 /* Extensions.swift in Sources */,
 				090C436E273C4BA2006D2FB5 /* AppDelegate.swift in Sources */,
-				090C439E273C518D006D2FB5 /* VideoListViewController.swift in Sources */,
+				090C439E273C518D006D2FB5 /* VideosViewController.swift in Sources */,
 				090C4370273C4BA2006D2FB5 /* SceneDelegate.swift in Sources */,
+				090C43A2273CBD3A006D2FB5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
