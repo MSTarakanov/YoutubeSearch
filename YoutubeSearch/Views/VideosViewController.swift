@@ -22,7 +22,7 @@ class VideosViewController: UIViewController {
         view.backgroundColor = .white
         let navImageView = UIImageView()
         navImageView.contentMode = .scaleAspectFit
-        navImageView.image = UIImage(named: Constants.UI.ImagesNames.logoWithText)
+        navImageView.image = UIImage(named: Constants.UI.ImagesNames.logoWithTextVertical)
         navigationItem.titleView = navImageView
     
         view.addSubview(videosTableView)

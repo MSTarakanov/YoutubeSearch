@@ -18,7 +18,8 @@ struct Constants {
             private init() {}
             
             static let logo = "logo"
-            static let logoWithText = "logo_with_text_vertical"
+            static let logoWithTextVertical = "logo_with_text_vertical"
+            static let logoWithTextHorizontal = "logo_with_text_horizontal"
         }
         
         struct FontsNames {
