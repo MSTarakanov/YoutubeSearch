@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let mainNavigationVC = UINavigationController(rootViewController: VideosViewController())
+        let mainNavigationVC = UINavigationController(rootViewController: ModuleBuilder.buildVideosModule())
         window?.rootViewController = mainNavigationVC
         
         window?.makeKeyAndVisible()

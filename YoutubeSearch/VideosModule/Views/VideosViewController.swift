@@ -9,6 +9,8 @@ import UIKit
 
 class VideosViewController: UIViewController {
     
+    var presenter: VideosPresenterProtocol!
+    
     private let videosTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,4 +41,8 @@ class VideosViewController: UIViewController {
         ])
     
     }
+}
+
+extension VideosViewController: VideosViewProtocol {
+    
 }
