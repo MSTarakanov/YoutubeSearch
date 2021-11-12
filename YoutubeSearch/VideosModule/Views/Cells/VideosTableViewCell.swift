@@ -27,4 +27,8 @@ class VideosTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configureCell(with videoModel: VideoModel) {
+        VideoTitleLabel.text = videoModel.title
+        ChanelTitleLabel.text = videoModel.channelTitle
+    }
 }
