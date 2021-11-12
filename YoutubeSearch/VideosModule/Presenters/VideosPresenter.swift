@@ -33,4 +33,13 @@ class VideosPresenter: VideosPresenterProtocol {
     func searchVideos(with query: String) {
         
     }
+    
+    // MARK: Private helpers functions -
+    private func getVideoModels(from searchResponseModel: SearchResponseModel) -> [VideoModel] {
+        if let searchItems = searchResponseModel.items {
+            return searchItems.compactMap {VideoModel(item: $0)}
+        }
+        print("[DEBUG] no videoModels from searchResponseModel")
+        return []
+    }
 }
