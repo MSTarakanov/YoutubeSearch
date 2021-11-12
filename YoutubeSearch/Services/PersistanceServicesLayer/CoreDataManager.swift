@@ -14,6 +14,7 @@ import CoreData
 protocol PersistanceManagerProtocol {
     func save(videoModels: [VideoModel])
     func loadVideoModels() -> [VideoModel]
+    func clear()
 }
 
 final class CoreDataManager: PersistanceManagerProtocol {
@@ -60,10 +61,19 @@ final class CoreDataManager: PersistanceManagerProtocol {
     
     func loadVideoModels() -> [VideoModel] {
         guard let videoEntities = try? storeContainer.viewContext.fetch(VideoEntity.fetchRequest()) else {
+            print("[DEBUG] CoreData fetch error")
             return []
         }
         return videoEntities.compactMap {VideoModel(videoEntity: $0)}
     }
     
-    
+    func clear() {
+        guard let videoEntities = try? storeContainer.viewContext.fetch(VideoEntity.fetchRequest()) else {
+            print("[DEBUG] CoreData fetch error")
+            return
+        }
+        for videoEntity in videoEntities {
+            storeContainer.viewContext.delete(videoEntity)
+        }
+    }
 }
