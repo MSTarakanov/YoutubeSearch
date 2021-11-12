@@ -39,12 +39,23 @@ final class CoreDataManager: PersistanceManagerProtocol {
     }
     
     
-    func add(videoModel: VideoModel) {
-        
+    private func add(videoModel: VideoModel) {
+        let videoEntity = VideoEntity(context: storeContainer.viewContext)
+        videoEntity.videoID = videoModel.videoID
+        videoEntity.title = videoModel.title
+        videoEntity.channelTitle = videoModel.channelTitle
+        videoEntity.defaultThumbnailsUrl = videoModel.defaultThumbnailsUrl
     }
     
     func save(videoModels: [VideoModel]) {
-        
+        for videoModel in videoModels {
+            add(videoModel: videoModel)
+        }
+        do {
+            try storeContainer.viewContext.save()
+        } catch {
+            print("[DEBUG] Context save error: \(error.localizedDescription)")
+        }
     }
     
     func loadVideoModels() -> [VideoModel] {
