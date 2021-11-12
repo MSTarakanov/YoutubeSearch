@@ -5,9 +5,11 @@ You can search videos and check their details [IN PROGRESS]
 - DI
 ---
 - NavigationController
-- TableView
+- TableView with UISearchBar
 ---
 - Autolayout
 - Xib
-- 
+- Custom Cells
 ---
+- NSURLSession (work with youtube API)
+- CoreData to cache
