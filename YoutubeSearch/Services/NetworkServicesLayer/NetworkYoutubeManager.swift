@@ -12,7 +12,7 @@ protocol NetworkYoutubeManagerProtocol {
 }
 
 // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyANZhJ-amES3tz3iMFcuDPbuH1YjtkLYqQ
-class NetworkYoutubeManager: NetworkYoutubeManagerProtocol {
+final class NetworkYoutubeManager: NetworkYoutubeManagerProtocol {
     
     // MARK: Private helpers -
     private func getRequest(with query: String) -> URLRequest? {

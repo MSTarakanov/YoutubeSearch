@@ -27,5 +27,20 @@ struct VideoModel {
         self.channelTitle = channelTitle
         self.defaultThumbnailsUrl = defaultThumbnailsUrl
     }
+    
+    init?(videoEntity: VideoEntity) {
+        guard
+            let videoID = videoEntity.videoID,
+                let title = videoEntity.title,
+            let channelTitle = videoEntity.channelTitle,
+            let defaultThumbnailsUrl = videoEntity.defaultThumbnailsUrl
+        else {
+            return nil
+        }
+        self.videoID = videoID
+        self.title = title
+        self.channelTitle = channelTitle
+        self.defaultThumbnailsUrl = defaultThumbnailsUrl
+    }
 }
 
