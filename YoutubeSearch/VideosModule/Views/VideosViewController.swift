@@ -18,13 +18,13 @@ class VideosViewController: UIViewController {
         searchBar.sizeToFit()
         searchBar.placeholder = "Search..."
         searchBar.isTranslucent = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
     }()
     
     private let videosTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.contentInset = .init(top: 10, left: 0, bottom: 0, right: 0)
         tableView.register(VideosTableViewCell.nib, forCellReuseIdentifier: VideosTableViewCell.identifier)
         return tableView
     }()
@@ -35,7 +35,7 @@ class VideosViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        videosTableView.addSubview(searchBar)
+        view.addSubview(searchBar)
         view.addSubview(videosTableView)
         
         videosTableView.dataSource = self
@@ -50,7 +50,11 @@ class VideosViewController: UIViewController {
     private func addConstraints() {
         
         NSLayoutConstraint.activate([
-            videosTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            videosTableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             videosTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             videosTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             videosTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

@@ -24,21 +24,27 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4zf-SW-tqf">
-                        <rect key="frame" x="130" y="22.5" width="133" height="59"/>
+                        <rect key="frame" x="130" y="22.5" width="237" height="59"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VideoTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rB9-LQ-lO3">
-                                <rect key="frame" x="0.0" y="0.0" width="125" height="25.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="237" height="25.5"/>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ChanelTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suY-7Q-bz0">
-                                <rect key="frame" x="0.0" y="33.5" width="133" height="25.5"/>
+                                <rect key="frame" x="0.0" y="33.5" width="237" height="25.5"/>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Light" family="Kohinoor Devanagari" pointSize="18"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="suY-7Q-bz0" firstAttribute="leading" secondItem="4zf-SW-tqf" secondAttribute="leading" id="DG4-YC-oUh"/>
+                            <constraint firstAttribute="trailing" secondItem="rB9-LQ-lO3" secondAttribute="trailing" id="eZ0-kc-hUS"/>
+                            <constraint firstItem="rB9-LQ-lO3" firstAttribute="leading" secondItem="4zf-SW-tqf" secondAttribute="leading" id="pa9-Q5-AAm"/>
+                            <constraint firstAttribute="trailing" secondItem="suY-7Q-bz0" secondAttribute="trailing" id="rZx-Nz-9jD"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -46,6 +52,7 @@
                     <constraint firstItem="4zf-SW-tqf" firstAttribute="leading" secondItem="AE4-wh-rcZ" secondAttribute="trailing" constant="8" symbolic="YES" id="C1d-xj-s6C"/>
                     <constraint firstItem="AE4-wh-rcZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="PV4-gd-RLy"/>
                     <constraint firstAttribute="bottom" secondItem="AE4-wh-rcZ" secondAttribute="bottom" constant="10" id="c2c-Md-A67"/>
+                    <constraint firstAttribute="trailing" secondItem="4zf-SW-tqf" secondAttribute="trailing" constant="15" id="p7z-Ct-gmU"/>
                     <constraint firstItem="AE4-wh-rcZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tVJ-H5-uva"/>
                 </constraints>
             </tableViewCellContentView>

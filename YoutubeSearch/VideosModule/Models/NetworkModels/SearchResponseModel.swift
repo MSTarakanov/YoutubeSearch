@@ -39,6 +39,7 @@ struct ID: Codable {
 
 enum IDKind: String, Codable {
     case youtubeVideo = "youtube#video"
+    case youtubeChannel = "youtube#channel"
 }
 
 enum ItemKind: String, Codable {
@@ -66,6 +67,7 @@ struct Snippet: Codable {
 enum LiveBroadcastContent: String, Codable {
     case none = "none"
     case upcoming = "upcoming"
+    case live = "live"
 }
 
 // MARK: - Thumbnails
