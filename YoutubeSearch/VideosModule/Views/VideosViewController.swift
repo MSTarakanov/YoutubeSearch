@@ -38,6 +38,8 @@ class VideosViewController: UIViewController {
         videosTableView.addSubview(searchBar)
         view.addSubview(videosTableView)
         
+        videosTableView.dataSource = self
+        videosTableView.delegate = self
         searchBar.delegate = self
         
         addNavigationItemImage()
@@ -66,8 +68,12 @@ class VideosViewController: UIViewController {
 
 // MARK: VideosViewProtocol -
 extension VideosViewController: VideosViewProtocol {
-    func showVideos(_ videos: [VideoModel]) {
-        print(videos)
+    func success() {
+        videosTableView.reloadData()
+    }
+    
+    func failure(errorMessage: String) {
+        print(errorMessage)
     }
 }
 
@@ -76,5 +82,28 @@ extension VideosViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("[DEBUG] Search button at keyboard clicked")
         presenter.searchVideos(with: searchBar.text ?? "")
+    }
+}
+
+// MARK: TableView extensions
+
+extension VideosViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        presenter.videoModels?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: VideosTableViewCell.identifier, for: indexPath) as! VideosTableViewCell
+        let videoModel = presenter.videoModels?[indexPath.row]
+        cell.VideoTitleLabel.text = videoModel?.title
+        return cell
+    }
+    
+    
+}
+
+extension VideosViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
     }
 }

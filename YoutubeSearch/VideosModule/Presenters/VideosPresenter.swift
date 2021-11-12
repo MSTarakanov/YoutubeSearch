@@ -9,29 +9,56 @@ import UIKit
 
 // MARK: Protocols -
 protocol VideosViewProtocol: AnyObject {
-    func showVideos(_ videos: [VideoModel])
+    func success()
+    func failure(errorMessage: String)
 }
 
 protocol VideosPresenterProtocol: AnyObject {
-    init(view: VideosViewProtocol, model: [VideoModel])
+    init(view: VideosViewProtocol,
+         networkService: NetworkYoutubeManagerProtocol,
+         persistanceService: PersistanceManagerProtocol)
     
+    var videoModels: [VideoModel]? {get set}
     func searchVideos(with query: String)
 }
 
 class VideosPresenter: VideosPresenterProtocol {
     
     // MARK: MVP setups -
-    let view: VideosViewProtocol
-    let model: [VideoModel]
+    weak var view: VideosViewProtocol?
+    let networkService: NetworkYoutubeManagerProtocol
+    let persistanceService: PersistanceManagerProtocol
     
-    required init(view: VideosViewProtocol, model: [VideoModel]) {
+    var videoModels: [VideoModel]?
+    
+    required init(view: VideosViewProtocol,
+                  networkService: NetworkYoutubeManagerProtocol,
+                  persistanceService: PersistanceManagerProtocol) {
         self.view = view
-        self.model = model
+        self.networkService = networkService
+        self.persistanceService = persistanceService
+        
+        // try to get data from pers
+        // mb videosModel! ?
     }
     
     // MARK: Presenter functions -
     func searchVideos(with query: String) {
-        
+        networkService.getVideos(with: query) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let searchResponseModel):
+                    if let searchResponseModel = searchResponseModel {
+                        self?.videoModels = self?.parseVideoModels(from: searchResponseModel) ?? []
+                    }
+                    self?.view?.success()
+                case .failure(let error):
+                    // TODO: AlertService.Alert
+                    print(error.localizedDescription)
+                    self?.view?.failure(errorMessage: error.localizedDescription)
+                }
+            } 
+        }
     }
     
     // MARK: Private helpers functions -

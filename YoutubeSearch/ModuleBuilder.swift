@@ -13,9 +13,10 @@ protocol Builder {
 
 class ModuleBuilder: Builder {
     static func buildVideosModule() -> UIViewController {
-        let model = [VideoModel]()
         let view = VideosViewController()
-        let presenter = VideosPresenter(view: view, model: model)
+        let networkService = NetworkYoutubeManager()
+        let coredataManager = CoreDataManager.shared
+        let presenter = VideosPresenter(view: view, networkService: networkService, persistanceService: coredataManager)
         view.presenter = presenter
         return view
     }
