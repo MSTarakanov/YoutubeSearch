@@ -30,5 +30,10 @@ class VideosTableViewCell: UITableViewCell {
     func configureCell(with videoModel: VideoModel) {
         VideoTitleLabel.text = videoModel.title
         ChanelTitleLabel.text = videoModel.channelTitle
+        // TODO: load details
+        // delegate / singletone / instance of loader / presenter?
+//        something.loadDetails { details in
+//            VideoImageView.image = details.image
+//        }
     }
 }
