@@ -18,7 +18,7 @@ protocol VideosPresenterProtocol: AnyObject {
          networkService: NetworkYoutubeManagerProtocol,
          persistanceService: PersistanceManagerProtocol)
     
-    var videoModels: [VideoModel]? {get set}
+    var videoModels: [VideoModel]! {get set}
     func searchVideos(with query: String)
 }
 
@@ -29,7 +29,7 @@ class VideosPresenter: VideosPresenterProtocol {
     let networkService: NetworkYoutubeManagerProtocol
     let persistanceService: PersistanceManagerProtocol
     
-    var videoModels: [VideoModel]?
+    var videoModels: [VideoModel]!
     
     required init(view: VideosViewProtocol,
                   networkService: NetworkYoutubeManagerProtocol,
@@ -38,8 +38,8 @@ class VideosPresenter: VideosPresenterProtocol {
         self.networkService = networkService
         self.persistanceService = persistanceService
         
+        self.videoModels = []
         // try to get data from pers
-        // mb videosModel! ?
     }
     
     // MARK: Presenter functions -

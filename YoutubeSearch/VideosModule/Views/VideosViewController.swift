@@ -93,14 +93,13 @@ extension VideosViewController: UISearchBarDelegate {
 
 extension VideosViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.videoModels?.count ?? 0
+        presenter.videoModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosTableViewCell.identifier, for: indexPath) as! VideosTableViewCell
-        // TODO: Unwrap videomodel - do not optional
-        let videoModel = presenter.videoModels?[indexPath.row]
-        cell.configureCell(with: videoModel!)
+        let videoModel = presenter.videoModels[indexPath.row]
+        cell.configureCell(with: videoModel)
         return cell
     }
     
