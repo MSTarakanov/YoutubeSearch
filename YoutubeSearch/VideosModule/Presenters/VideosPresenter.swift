@@ -35,7 +35,7 @@ class VideosPresenter: VideosPresenterProtocol {
     }
     
     // MARK: Private helpers functions -
-    private func getVideoModels(from searchResponseModel: SearchResponseModel) -> [VideoModel] {
+    private func parseVideoModels(from searchResponseModel: SearchResponseModel) -> [VideoModel] {
         if let searchItems = searchResponseModel.items {
             return searchItems.compactMap {VideoModel(item: $0)}
         }
