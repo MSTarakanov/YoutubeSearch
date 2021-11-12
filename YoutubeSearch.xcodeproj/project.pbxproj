@@ -26,6 +26,9 @@
 		090C43DA273DB0A3006D2FB5 /* NetworkYoutubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43D9273DB0A3006D2FB5 /* NetworkYoutubeManager.swift */; };
 		090C43DC273DB39B006D2FB5 /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43DB273DB39B006D2FB5 /* SearchResponseModel.swift */; };
 		090C43DF273DD8BE006D2FB5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43DE273DD8BE006D2FB5 /* CoreDataManager.swift */; };
+		090C43E2273DDB3E006D2FB5 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 090C43E0273DDB3E006D2FB5 /* Database.xcdatamodeld */; };
+		090C43E5273DE79C006D2FB5 /* VideoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43E3273DE79C006D2FB5 /* VideoEntity+CoreDataClass.swift */; };
+		090C43E6273DE79C006D2FB5 /* VideoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C43E4273DE79C006D2FB5 /* VideoEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		090C43D9273DB0A3006D2FB5 /* NetworkYoutubeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkYoutubeManager.swift; sourceTree = "<group>"; };
 		090C43DB273DB39B006D2FB5 /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 		090C43DE273DD8BE006D2FB5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		090C43E1273DDB3E006D2FB5 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		090C43E3273DE79C006D2FB5 /* VideoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		090C43E4273DE79C006D2FB5 /* VideoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +167,9 @@
 		090C43A5273CC7AF006D2FB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				090C43E8273DE7BA006D2FB5 /* NetworkModels */,
+				090C43E7273DE7A9006D2FB5 /* PersistanceModels */,
 				090C43AA273CC875006D2FB5 /* VideoModel.swift */,
-				090C43DB273DB39B006D2FB5 /* SearchResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,26 +222,44 @@
 		090C43D7273DB054006D2FB5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				090C43DD273DD8A8006D2FB5 /* PersistanceServices */,
-				090C43D8273DB073006D2FB5 /* NetworkServices */,
+				090C43DD273DD8A8006D2FB5 /* PersistanceServicesLayer */,
+				090C43D8273DB073006D2FB5 /* NetworkServicesLayer */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		090C43D8273DB073006D2FB5 /* NetworkServices */ = {
+		090C43D8273DB073006D2FB5 /* NetworkServicesLayer */ = {
 			isa = PBXGroup;
 			children = (
 				090C43D9273DB0A3006D2FB5 /* NetworkYoutubeManager.swift */,
 			);
-			path = NetworkServices;
+			path = NetworkServicesLayer;
 			sourceTree = "<group>";
 		};
-		090C43DD273DD8A8006D2FB5 /* PersistanceServices */ = {
+		090C43DD273DD8A8006D2FB5 /* PersistanceServicesLayer */ = {
 			isa = PBXGroup;
 			children = (
 				090C43DE273DD8BE006D2FB5 /* CoreDataManager.swift */,
+				090C43E0273DDB3E006D2FB5 /* Database.xcdatamodeld */,
 			);
-			path = PersistanceServices;
+			path = PersistanceServicesLayer;
+			sourceTree = "<group>";
+		};
+		090C43E7273DE7A9006D2FB5 /* PersistanceModels */ = {
+			isa = PBXGroup;
+			children = (
+				090C43E3273DE79C006D2FB5 /* VideoEntity+CoreDataClass.swift */,
+				090C43E4273DE79C006D2FB5 /* VideoEntity+CoreDataProperties.swift */,
+			);
+			path = PersistanceModels;
+			sourceTree = "<group>";
+		};
+		090C43E8273DE7BA006D2FB5 /* NetworkModels */ = {
+			isa = PBXGroup;
+			children = (
+				090C43DB273DB39B006D2FB5 /* SearchResponseModel.swift */,
+			);
+			path = NetworkModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +393,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090C43E5273DE79C006D2FB5 /* VideoEntity+CoreDataClass.swift in Sources */,
+				090C43E2273DDB3E006D2FB5 /* Database.xcdatamodeld in Sources */,
 				090C43A4273CC070006D2FB5 /* Extensions.swift in Sources */,
 				090C43B2273CDBDE006D2FB5 /* Credentials.swift in Sources */,
 				090C43AF273CC933006D2FB5 /* VideosTableViewCell.swift in Sources */,
@@ -380,6 +407,7 @@
 				090C43AB273CC875006D2FB5 /* VideoModel.swift in Sources */,
 				090C43DA273DB0A3006D2FB5 /* NetworkYoutubeManager.swift in Sources */,
 				090C43A9273CC85A006D2FB5 /* VideosPresenter.swift in Sources */,
+				090C43E6273DE79C006D2FB5 /* VideoEntity+CoreDataProperties.swift in Sources */,
 				090C43A2273CBD3A006D2FB5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,6 +764,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		090C43E0273DDB3E006D2FB5 /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				090C43E1273DDB3E006D2FB5 /* Database.xcdatamodel */,
+			);
+			currentVersion = 090C43E1273DDB3E006D2FB5 /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 090C4362273C4BA2006D2FB5 /* Project object */;
 }
