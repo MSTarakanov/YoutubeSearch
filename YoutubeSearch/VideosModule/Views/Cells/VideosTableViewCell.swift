@@ -12,13 +12,39 @@ class VideosTableViewCell: UITableViewCell {
     static let identifier = "VideosTableViewCellIdentifier"
     static let nib = UINib(nibName: "VideosTableViewCell", bundle: nil)
     
-    @IBOutlet weak var VideoImageView: UIImageView!
-    @IBOutlet weak var VideoTitleLabel: UILabel!
-    @IBOutlet weak var ChanelTitleLabel: UILabel!
+    @IBOutlet weak var videoImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var videoTitleLabel: UILabel!
+    @IBOutlet weak var channelTitleLabel: UILabel!
+    
+
+    
+    private let imageLoader: ImageLoaderProtocol = ImageLoader()
+    
+    
+    private var imagePath: String? {
+        didSet {
+            videoImageView.image = nil
+            activityIndicator.startAnimating()
+            if let path = imagePath {
+                DispatchQueue.global().async { 
+                    let image = self.imageLoader.loadImage(from: path)
+                    if path == self.imagePath {
+                        DispatchQueue.main.async {
+                            self.videoImageView.image = image
+                            self.activityIndicator.stopAnimating()
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,12 +54,11 @@ class VideosTableViewCell: UITableViewCell {
     }
     
     func configureCell(with videoModel: VideoModel) {
-        VideoTitleLabel.text = videoModel.title
-        ChanelTitleLabel.text = videoModel.channelTitle
+        videoTitleLabel.text = videoModel.title
+        channelTitleLabel.text = videoModel.channelTitle
+        
         // TODO: load details
         // delegate / singletone / instance of loader / presenter?
-//        something.loadDetails { details in
-//            VideoImageView.image = details.image
-//        }
+        imagePath = videoModel.defaultThumbnailsUrl
     }
 }

@@ -46,8 +46,13 @@
                             <constraint firstAttribute="trailing" secondItem="suY-7Q-bz0" secondAttribute="trailing" id="rZx-Nz-9jD"/>
                         </constraints>
                     </stackView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="gtf-9j-3ZJ">
+                        <rect key="frame" x="56" y="42" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="gtf-9j-3ZJ" firstAttribute="centerX" secondItem="AE4-wh-rcZ" secondAttribute="centerX" id="3Mk-IK-dh4"/>
+                    <constraint firstItem="gtf-9j-3ZJ" firstAttribute="centerY" secondItem="AE4-wh-rcZ" secondAttribute="centerY" id="658-Cp-Qo4"/>
                     <constraint firstItem="4zf-SW-tqf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6sh-xQ-yE0"/>
                     <constraint firstItem="4zf-SW-tqf" firstAttribute="leading" secondItem="AE4-wh-rcZ" secondAttribute="trailing" constant="8" symbolic="YES" id="C1d-xj-s6C"/>
                     <constraint firstItem="AE4-wh-rcZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="PV4-gd-RLy"/>
@@ -58,9 +63,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="ChanelTitleLabel" destination="suY-7Q-bz0" id="sXT-2z-qE9"/>
-                <outlet property="VideoImageView" destination="AE4-wh-rcZ" id="9lF-jI-gNR"/>
-                <outlet property="VideoTitleLabel" destination="rB9-LQ-lO3" id="Fnp-5v-kbz"/>
+                <outlet property="activityIndicator" destination="gtf-9j-3ZJ" id="xuK-9S-nWx"/>
+                <outlet property="channelTitleLabel" destination="suY-7Q-bz0" id="S0g-Pp-BND"/>
+                <outlet property="videoImageView" destination="AE4-wh-rcZ" id="5mT-uA-j45"/>
+                <outlet property="videoTitleLabel" destination="rB9-LQ-lO3" id="Dz2-xk-eRT"/>
             </connections>
             <point key="canvasLocation" x="186.95652173913044" y="110.49107142857143"/>
         </tableViewCell>
