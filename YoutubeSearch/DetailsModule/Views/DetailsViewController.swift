@@ -13,7 +13,7 @@ class DetailsViewController: UIViewController {
     
     // MARK: UI privates -
     
-    // TODO: subclasses of uiview/uilabel
+    // TODO: subclasses of uiview/uilabel and delete text
     private let prewiewView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +58,7 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.shapes
+        label.text = "Likes"
         return label
     }()
     
@@ -66,6 +67,7 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.shapes
+        label.text = "Dislikes"
         return label
     }()
     
@@ -134,6 +136,28 @@ class DetailsViewController: UIViewController {
         labelsStackView.addArrangedSubview(viewsCountLabel)
         mainStackView.addArrangedSubview(labelsStackView)
         
+        let likesDislikesStackView = UIStackView()
+        likesDislikesStackView.translatesAutoresizingMaskIntoConstraints = false
+        likesDislikesStackView.axis = .horizontal
+        likesDislikesStackView.distribution = .fillEqually
+        
+        let likesStackView = UIStackView()
+        likesStackView.translatesAutoresizingMaskIntoConstraints = false
+        likesStackView.axis = .vertical
+        likesStackView.alignment = .center
+        
+        let dislikesStackView = UIStackView()
+        dislikesStackView.translatesAutoresizingMaskIntoConstraints = false
+        dislikesStackView.axis = .vertical
+        dislikesStackView.alignment = .center
+        
+        likesStackView.addArrangedSubview(likesImageView)
+        likesStackView.addArrangedSubview(likesCountLabel)
+        dislikesStackView.addArrangedSubview(dislikesImageView)
+        dislikesStackView.addArrangedSubview(dislikesCountLabel)
+        likesDislikesStackView.addArrangedSubview(likesStackView)
+        likesDislikesStackView.addArrangedSubview(dislikesStackView)
+        mainStackView.addArrangedSubview(likesDislikesStackView)
         
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -143,7 +167,13 @@ class DetailsViewController: UIViewController {
             prewiewView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
             prewiewView.heightAnchor.constraint(equalTo: prewiewView.widthAnchor, multiplier: 9/16),
             
-            labelsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor)
+            labelsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
+            
+            likesImageView.widthAnchor.constraint(equalTo: likesImageView.heightAnchor),
+            likesImageView.widthAnchor.constraint(equalToConstant: 65),
+            dislikesImageView.widthAnchor.constraint(equalTo: dislikesImageView.heightAnchor),
+            dislikesImageView.widthAnchor.constraint(equalToConstant: 65),
+            likesDislikesStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
         ])
         
     }
