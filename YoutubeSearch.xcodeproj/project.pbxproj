@@ -175,10 +175,9 @@
 		090C43A5273CC7AF006D2FB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				09EE34B5273F3FFB00B1030F /* ClearModels */,
 				090C43E8273DE7BA006D2FB5 /* NetworkModels */,
 				090C43E7273DE7A9006D2FB5 /* PersistanceModels */,
-				090C43AA273CC875006D2FB5 /* VideoModel.swift */,
-				09EE34B3273F3C3700B1030F /* ImageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +271,15 @@
 				090C43DB273DB39B006D2FB5 /* SearchResponseModel.swift */,
 			);
 			path = NetworkModels;
+			sourceTree = "<group>";
+		};
+		09EE34B5273F3FFB00B1030F /* ClearModels */ = {
+			isa = PBXGroup;
+			children = (
+				090C43AA273CC875006D2FB5 /* VideoModel.swift */,
+				09EE34B3273F3C3700B1030F /* ImageModel.swift */,
+			);
+			path = ClearModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
