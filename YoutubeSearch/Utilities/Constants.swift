@@ -45,7 +45,10 @@ struct Constants {
     struct Network {
         private init() {}
         
-        static let baseYotubeSearchUrl = "https://youtube.googleapis.com/youtube/v3/search"
+        static let baseYoutubeUrl = "https://youtube.googleapis.com/youtube/v3/"
+        static let yotubeSearchUrl = baseYoutubeUrl + "search"
+        static let yotubeVideoDetailsUrl = baseYoutubeUrl + "videos"
+        static let yotubeChannelDetailsUrl = baseYoutubeUrl + "channels"
         static let watchBaseUrl = ""
         
         static func urlToWatch(video id: String) -> String {
