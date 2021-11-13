@@ -33,6 +33,9 @@
 		09EE34B1273F3A1500B1030F /* ImageEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34AF273F3A1500B1030F /* ImageEntity+CoreDataClass.swift */; };
 		09EE34B2273F3A1500B1030F /* ImageEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34B0273F3A1500B1030F /* ImageEntity+CoreDataProperties.swift */; };
 		09EE34B4273F3C3700B1030F /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34B3273F3C3700B1030F /* ImageModel.swift */; };
+		09EE34BB273F7D0B00B1030F /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34BA273F7D0B00B1030F /* DetailsModel.swift */; };
+		09EE34BD273F7DEB00B1030F /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34BC273F7DEB00B1030F /* DetailsPresenter.swift */; };
+		09EE34BF273F7ED500B1030F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34BE273F7ED500B1030F /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,9 @@
 		09EE34AF273F3A1500B1030F /* ImageEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		09EE34B0273F3A1500B1030F /* ImageEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		09EE34B3273F3C3700B1030F /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		09EE34BA273F7D0B00B1030F /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
+		09EE34BC273F7DEB00B1030F /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		09EE34BE273F7ED500B1030F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 				090C43D7273DB054006D2FB5 /* Services */,
 				090C43B5273D76B2006D2FB5 /* ModuleBuilder.swift */,
 				090C43B3273D72DB006D2FB5 /* VideosModule */,
+				09EE34B6273F7C6800B1030F /* DetailsModule */,
 				090C439F273CBCE8006D2FB5 /* Utilities */,
 				090C43B4273D7319006D2FB5 /* Setup */,
 				090C4376273C4BA3006D2FB5 /* Assets.xcassets */,
@@ -282,6 +289,40 @@
 			path = ClearModels;
 			sourceTree = "<group>";
 		};
+		09EE34B6273F7C6800B1030F /* DetailsModule */ = {
+			isa = PBXGroup;
+			children = (
+				09EE34B7273F7C9A00B1030F /* Models */,
+				09EE34B8273F7CA400B1030F /* Presenters */,
+				09EE34B9273F7CB000B1030F /* Views */,
+			);
+			path = DetailsModule;
+			sourceTree = "<group>";
+		};
+		09EE34B7273F7C9A00B1030F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09EE34BA273F7D0B00B1030F /* DetailsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		09EE34B8273F7CA400B1030F /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				09EE34BC273F7DEB00B1030F /* DetailsPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		09EE34B9273F7CB000B1030F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09EE34BE273F7ED500B1030F /* DetailsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -414,13 +455,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				09EE34B1273F3A1500B1030F /* ImageEntity+CoreDataClass.swift in Sources */,
+				09EE34BF273F7ED500B1030F /* DetailsViewController.swift in Sources */,
 				09EE34B2273F3A1500B1030F /* ImageEntity+CoreDataProperties.swift in Sources */,
 				090C43E5273DE79C006D2FB5 /* VideoEntity+CoreDataClass.swift in Sources */,
 				090C43E2273DDB3E006D2FB5 /* Database.xcdatamodeld in Sources */,
+				09EE34BB273F7D0B00B1030F /* DetailsModel.swift in Sources */,
 				090C43A4273CC070006D2FB5 /* Extensions.swift in Sources */,
 				090C43B2273CDBDE006D2FB5 /* Credentials.swift in Sources */,
 				090C43AF273CC933006D2FB5 /* VideosTableViewCell.swift in Sources */,
 				090C43B6273D76B2006D2FB5 /* ModuleBuilder.swift in Sources */,
+				09EE34BD273F7DEB00B1030F /* DetailsPresenter.swift in Sources */,
 				090C436E273C4BA2006D2FB5 /* AppDelegate.swift in Sources */,
 				090C439E273C518D006D2FB5 /* VideosViewController.swift in Sources */,
 				090C43DC273DB39B006D2FB5 /* SearchResponseModel.swift in Sources */,
