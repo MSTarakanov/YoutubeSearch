@@ -13,3 +13,4 @@ You can search videos and check their details [IN PROGRESS]
 ---
 - NSURLSession (work with youtube API)
 - CoreData to cache
+- GCD
