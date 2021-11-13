@@ -83,6 +83,7 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.shapes
+        label.text = "channelTitleLabel"
         return label
     }()
     
@@ -91,6 +92,8 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.secondaryShapes
+        label.textAlignment = .right
+        label.text = "subsCountLabel"
         return label
     }()
     
@@ -159,6 +162,21 @@ class DetailsViewController: UIViewController {
         likesDislikesStackView.addArrangedSubview(dislikesStackView)
         mainStackView.addArrangedSubview(likesDislikesStackView)
         
+        let channelPreviewStackView = UIStackView()
+        channelPreviewStackView.translatesAutoresizingMaskIntoConstraints = false
+        channelPreviewStackView.axis = .horizontal
+        
+        let channelStackView = UIStackView()
+        channelStackView.translatesAutoresizingMaskIntoConstraints = false
+        channelStackView.axis = .horizontal
+        channelStackView.distribution = .fillEqually
+        
+        channelPreviewStackView.addArrangedSubview(channelImageView)
+        channelPreviewStackView.addArrangedSubview(channelTitleLabel)
+        channelStackView.addArrangedSubview(channelPreviewStackView)
+        channelStackView.addArrangedSubview(subsCountLabel)
+        mainStackView.addArrangedSubview(channelStackView)
+        
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
@@ -174,6 +192,10 @@ class DetailsViewController: UIViewController {
             dislikesImageView.widthAnchor.constraint(equalTo: dislikesImageView.heightAnchor),
             dislikesImageView.widthAnchor.constraint(equalToConstant: 65),
             likesDislikesStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
+            
+            channelImageView.widthAnchor.constraint(equalToConstant: 44),
+            channelImageView.heightAnchor.constraint(equalTo: channelImageView.widthAnchor),
+            channelStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
         ])
         
     }
