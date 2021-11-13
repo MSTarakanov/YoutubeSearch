@@ -114,7 +114,7 @@ extension VideosViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let detailViewController = ModuleBuilder.buildDetailsModule()
+        let detailViewController = ModuleBuilder.buildDetailsModule(videoModel: presenter.videoModels[indexPath.row])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol Builder {
     static func buildVideosModule() -> UIViewController
-    static func buildDetailsModule() -> UIViewController
+    static func buildDetailsModule(videoModel: VideoModel) -> UIViewController
 }
 
 class ModuleBuilder: Builder {
@@ -22,11 +22,11 @@ class ModuleBuilder: Builder {
         return view
     }
     
-    static func buildDetailsModule() -> UIViewController {
+    static func buildDetailsModule(videoModel: VideoModel) -> UIViewController {
         let view = DetailsViewController()
         let networkService = NetworkYoutubeManager()
         let persistanceService = CoreDataManager.shared
-        let presenter = DetailsPresenter(view: view, networkService: networkService, persistanceService: persistanceService)
+        let presenter = DetailsPresenter(view: view, videoModel: videoModel, networkService: networkService, persistanceService: persistanceService)
         view.presenter = presenter
         return view
     }

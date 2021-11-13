@@ -31,6 +31,7 @@ class VideosPresenter: VideosPresenterProtocol {
     
     var videoModels: [VideoModel]! {
         didSet {
+            // TODO: check is it right to work with context at back thread
             DispatchQueue.global(qos: .userInitiated).async {
                 self.persistanceService.clearImageModels()
                 self.persistanceService.clearVideoModels()

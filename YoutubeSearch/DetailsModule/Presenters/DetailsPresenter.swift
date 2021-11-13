@@ -8,14 +8,19 @@
 import Foundation
 
 protocol DetailsViewProtocol: AnyObject {
-    
+    func success()
+    func failure(errorMessage: String)
 }
 
 protocol DetailsPresenterProtocol: AnyObject {
     init(view: DetailsViewProtocol,
+         videoModel: VideoModel,
          networkService: NetworkYoutubeManagerProtocol,
          persistanceService: PersistanceManagerProtocol)
     
+    var videoModel: VideoModel { get set }
+    
+    func getVideoWithDetails(_ videoID: String)
 }
 
 class DetailsPresenter: DetailsPresenterProtocol {
@@ -25,11 +30,16 @@ class DetailsPresenter: DetailsPresenterProtocol {
     let networkService: NetworkYoutubeManagerProtocol
     let persistanceService: PersistanceManagerProtocol
     
-    // var videoInfo: videoModel? videoInfo?
+    var videoModel: VideoModel
     
-    required init(view: DetailsViewProtocol, networkService: NetworkYoutubeManagerProtocol, persistanceService: PersistanceManagerProtocol) {
+    required init(view: DetailsViewProtocol, videoModel: VideoModel, networkService: NetworkYoutubeManagerProtocol, persistanceService: PersistanceManagerProtocol) {
         self.view = view
+        self.videoModel = videoModel
         self.networkService = networkService
         self.persistanceService = persistanceService
+    }
+    
+    func getVideoWithDetails(_ videoID: String) {
+        
     }
 }

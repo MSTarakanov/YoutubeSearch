@@ -233,5 +233,11 @@ class DetailsViewController: UIViewController {
 
 // MARK: DetailsViewProtocol extension -
 extension DetailsViewController: DetailsViewProtocol {
+    func success() {
+        
+    }
     
+    func failure(errorMessage: String) {
+        
+    }  
 }
