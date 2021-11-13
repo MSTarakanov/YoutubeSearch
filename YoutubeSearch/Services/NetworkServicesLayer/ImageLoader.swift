@@ -12,7 +12,14 @@ protocol ImageLoaderProtocol {
 }
 
 class ImageLoader: ImageLoaderProtocol {
+    
+    let persistanceService: PersistanceManagerProtocol = CoreDataManager.shared
+    
     func loadImage(from path: String) -> UIImage? {
+        if let imageFromPersistace = persistanceService.getImage(with: path)  {
+            return imageFromPersistace
+        }
+        
         guard let url = URL(string: path) else {
             print("[DEBUG] Bad url: \(path)")
             return nil
@@ -24,7 +31,8 @@ class ImageLoader: ImageLoaderProtocol {
                 print("[DEBUG] no image from data with path: \(path)")
                 return nil
             }
-            // save(image, path)
+            let imageModel = ImageModel(imagePath: path, image: image)
+            persistanceService.save(imageModel: imageModel)
             return image
         } catch {
             print("[DEBUG] Error with data from \(path) with error: \(error.localizedDescription)")
