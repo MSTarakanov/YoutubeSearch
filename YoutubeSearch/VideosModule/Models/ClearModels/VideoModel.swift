@@ -12,6 +12,7 @@ struct VideoModel {
     let title: String
     let channelTitle: String
     let defaultThumbnailsUrl: String
+    let details: DetailsModel?
     
     init?(item: SearchItem) {
         guard
@@ -26,6 +27,7 @@ struct VideoModel {
         self.title = title
         self.channelTitle = channelTitle
         self.defaultThumbnailsUrl = defaultThumbnailsUrl
+        self.details = nil
     }
     
     init?(videoEntity: VideoEntity) {
@@ -41,6 +43,7 @@ struct VideoModel {
         self.title = title
         self.channelTitle = channelTitle
         self.defaultThumbnailsUrl = defaultThumbnailsUrl
+        self.details = nil
     }
 }
 
