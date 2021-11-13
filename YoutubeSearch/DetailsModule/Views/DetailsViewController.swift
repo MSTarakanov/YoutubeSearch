@@ -26,6 +26,7 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.shapes
+        label.text = "No title for this video"
         return label
     }()
     
@@ -34,6 +35,7 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 15)
         label.textColor = Constants.UI.Colors.secondaryShapes
+        label.text = "No viewscount for this video"
         return label
     }()
     
@@ -115,13 +117,23 @@ class DetailsViewController: UIViewController {
     
     // MARK: UI setup helpers functions -
     private func addSubviews() {
+        // TODO: Reorganize it
         let mainStackView = UIStackView()
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         mainStackView.axis = .vertical
         mainStackView.backgroundColor = .cyan
-        view.addSubview(mainStackView)
         
+        view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(prewiewView)
+        
+        let labelsStackView = UIStackView()
+        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
+        labelsStackView.axis = .vertical
+        
+        labelsStackView.addArrangedSubview(videoTitleLable)
+        labelsStackView.addArrangedSubview(viewsCountLabel)
+        mainStackView.addArrangedSubview(labelsStackView)
+        
         
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -129,8 +141,9 @@ class DetailsViewController: UIViewController {
             mainStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
             prewiewView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-            prewiewView.heightAnchor.constraint(equalTo: prewiewView.widthAnchor, multiplier: 9/16)
+            prewiewView.heightAnchor.constraint(equalTo: prewiewView.widthAnchor, multiplier: 9/16),
             
+            labelsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor)
         ])
         
     }
