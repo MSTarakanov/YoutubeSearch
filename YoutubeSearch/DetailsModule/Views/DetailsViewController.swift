@@ -109,7 +109,66 @@ class DetailsViewController: UIViewController {
     }()
     
     // MARK: StackViews -
+    private let mainStackView: UIStackView = {
+        let mainStackView = UIStackView()
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView.axis = .vertical
+        mainStackView.alignment = .center
+        mainStackView.spacing = 24
+        return mainStackView
+    }()
     
+    private let labelsStackView: UIStackView = {
+        let labelsStackView = UIStackView()
+        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
+        labelsStackView.axis = .vertical
+        labelsStackView.spacing = 8
+        labelsStackView.isLayoutMarginsRelativeArrangement = true
+        labelsStackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
+        return labelsStackView
+    }()
+    
+    private let likesDislikesStackView: UIStackView = {
+        let likesDislikesStackView = UIStackView()
+        likesDislikesStackView.translatesAutoresizingMaskIntoConstraints = false
+        likesDislikesStackView.axis = .horizontal
+        likesDislikesStackView.distribution = .fillEqually
+        return likesDislikesStackView
+    }()
+    
+    private let likesStackView: UIStackView = {
+        let likesStackView = UIStackView()
+        likesStackView.translatesAutoresizingMaskIntoConstraints = false
+        likesStackView.axis = .vertical
+        likesStackView.alignment = .center
+        return likesStackView
+    }()
+    
+    private let dislikesStackView: UIStackView = {
+        let dislikesStackView = UIStackView()
+        dislikesStackView.translatesAutoresizingMaskIntoConstraints = false
+        dislikesStackView.axis = .vertical
+        dislikesStackView.alignment = .center
+        return dislikesStackView
+    }()
+    
+    private let channelPreviewStackView: UIStackView = {
+        let channelPreviewStackView = UIStackView()
+        channelPreviewStackView.translatesAutoresizingMaskIntoConstraints = false
+        channelPreviewStackView.axis = .horizontal
+        channelPreviewStackView.spacing = 8
+        return channelPreviewStackView
+    }()
+    
+    private let channelStackView: UIStackView = {
+        let channelStackView = UIStackView()
+        channelStackView.translatesAutoresizingMaskIntoConstraints = false
+        channelStackView.axis = .horizontal
+        channelStackView.distribution = .fillEqually
+        channelStackView.isLayoutMarginsRelativeArrangement = true
+        channelStackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
+        return channelStackView
+    }()
     
     // MARK: VC Lifecycle -
     override func viewDidLoad() {
@@ -122,42 +181,12 @@ class DetailsViewController: UIViewController {
     
     // MARK: UI setup helpers functions -
     private func addSubviews() {
-        // TODO: Reorganize it
-        let mainStackView = UIStackView()
-        mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        mainStackView.axis = .vertical
-        mainStackView.alignment = .center
-        mainStackView.spacing = 24
-        //mainStackView.backgroundColor = .cyan
-        
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(prewiewView)
-        
-        let labelsStackView = UIStackView()
-        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
-        labelsStackView.axis = .vertical
-        labelsStackView.spacing = 8
-        labelsStackView.isLayoutMarginsRelativeArrangement = true
-        labelsStackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
         
         labelsStackView.addArrangedSubview(videoTitleLable)
         labelsStackView.addArrangedSubview(viewsCountLabel)
         mainStackView.addArrangedSubview(labelsStackView)
-        
-        let likesDislikesStackView = UIStackView()
-        likesDislikesStackView.translatesAutoresizingMaskIntoConstraints = false
-        likesDislikesStackView.axis = .horizontal
-        likesDislikesStackView.distribution = .fillEqually
-        
-        let likesStackView = UIStackView()
-        likesStackView.translatesAutoresizingMaskIntoConstraints = false
-        likesStackView.axis = .vertical
-        likesStackView.alignment = .center
-        
-        let dislikesStackView = UIStackView()
-        dislikesStackView.translatesAutoresizingMaskIntoConstraints = false
-        dislikesStackView.axis = .vertical
-        dislikesStackView.alignment = .center
         
         likesStackView.addArrangedSubview(likesImageView)
         likesStackView.addArrangedSubview(likesCountLabel)
@@ -167,18 +196,6 @@ class DetailsViewController: UIViewController {
         likesDislikesStackView.addArrangedSubview(dislikesStackView)
         mainStackView.addArrangedSubview(likesDislikesStackView)
         
-        let channelPreviewStackView = UIStackView()
-        channelPreviewStackView.translatesAutoresizingMaskIntoConstraints = false
-        channelPreviewStackView.axis = .horizontal
-        channelPreviewStackView.spacing = 8
-        
-        let channelStackView = UIStackView()
-        channelStackView.translatesAutoresizingMaskIntoConstraints = false
-        channelStackView.axis = .horizontal
-        channelStackView.distribution = .fillEqually
-        channelStackView.isLayoutMarginsRelativeArrangement = true
-        channelStackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
-        
         channelPreviewStackView.addArrangedSubview(channelImageView)
         channelPreviewStackView.addArrangedSubview(channelTitleLabel)
         channelStackView.addArrangedSubview(channelPreviewStackView)
@@ -186,7 +203,9 @@ class DetailsViewController: UIViewController {
         mainStackView.addArrangedSubview(channelStackView)
         
         mainStackView.addArrangedSubview(watchOnYoutubeButton)
-        
+    }
+    
+    private func addConstraints() {
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
@@ -208,15 +227,9 @@ class DetailsViewController: UIViewController {
             channelStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
             
         ])
-        
-    }
-    
-    private func addConstraints() {
-        
     }
 
 }
-
 
 // MARK: DetailsViewProtocol extension -
 extension DetailsViewController: DetailsViewProtocol {
