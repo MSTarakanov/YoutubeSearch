@@ -17,7 +17,8 @@ class ModuleBuilder: Builder {
         let view = VideosViewController()
         let networkService = NetworkYoutubeManager()
         let persistanceService = CoreDataManager.shared
-        let presenter = VideosPresenter(view: view, networkService: networkService, persistanceService: persistanceService)
+        let imageLoader = ImageLoader()
+        let presenter = VideosPresenter(view: view, networkService: networkService, imageLoader: imageLoader, persistanceService: persistanceService)
         view.presenter = presenter
         return view
     }
@@ -26,7 +27,8 @@ class ModuleBuilder: Builder {
         let view = DetailsViewController()
         let networkService = NetworkYoutubeManager()
         let persistanceService = CoreDataManager.shared
-        let presenter = DetailsPresenter(view: view, videoModel: videoModel, networkService: networkService, persistanceService: persistanceService)
+        let imageLoader = ImageLoader()
+        let presenter = DetailsPresenter(view: view, videoModel: videoModel, networkService: networkService, imageLoader: imageLoader, persistanceService: persistanceService)
         view.presenter = presenter
         return view
     }

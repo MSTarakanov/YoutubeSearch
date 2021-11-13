@@ -14,10 +14,11 @@ class DetailsViewController: UIViewController {
     // MARK: UI privates -
     
     // TODO: subclasses of uiview/uilabel and delete text
-    private let prewiewView: UIView = {
-        let view = UIView()
+    private let prewiewView: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Constants.UI.Colors.secondary
+        view.contentMode = .scaleToFill
         return view
     }()
     
@@ -26,7 +27,7 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.shapes
-        label.text = "No title for this video"
+        label.numberOfLines = 2
         return label
     }()
     
@@ -175,6 +176,11 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = Constants.UI.Colors.primary
+        
+        videoTitleLable.text = presenter.videoModel.title
+        channelTitleLabel.text = presenter.videoModel.channelTitle
+        prewiewView.image = presenter.getImage(from: presenter.videoModel.defaultThumbnailsUrl) ?? UIImage(named: Constants.UI.ImagesNames.logoWithTextVertical)
+        
         addSubviews()
         addConstraints()
     }

@@ -100,7 +100,7 @@ extension VideosViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosTableViewCell.identifier, for: indexPath) as! VideosTableViewCell
         let videoModel = presenter.videoModels[indexPath.row]
         cell.configureCell(with: videoModel)
-        // TODO: Cell delegate to load image adn details    
+        cell.presenter = presenter
         return cell
     }
     

@@ -17,10 +17,7 @@ class VideosTableViewCell: UITableViewCell {
     @IBOutlet weak var videoTitleLabel: UILabel!
     @IBOutlet weak var channelTitleLabel: UILabel!
     
-
-    
-    private let imageLoader: ImageLoaderProtocol = ImageLoader()
-    
+    var presenter: VideosPresenterProtocol!
     
     private var imagePath: String? {
         didSet {
@@ -28,7 +25,7 @@ class VideosTableViewCell: UITableViewCell {
             activityIndicator.startAnimating()
             if let path = imagePath {
                 DispatchQueue.global().async { 
-                    let image = self.imageLoader.loadImage(from: path)
+                    let image = self.presenter.getImage(from: path)
                     if path == self.imagePath {
                         DispatchQueue.main.async {
                             if let image = image {

@@ -16,10 +16,13 @@ protocol VideosViewProtocol: AnyObject {
 protocol VideosPresenterProtocol: AnyObject {
     init(view: VideosViewProtocol,
          networkService: NetworkYoutubeManagerProtocol,
+         imageLoader: ImageLoader,
          persistanceService: PersistanceManagerProtocol)
     
     var videoModels: [VideoModel]! {get set}
+    
     func searchVideos(with query: String)
+    func getImage(from path: String) -> UIImage?
 }
 
 class VideosPresenter: VideosPresenterProtocol {
@@ -28,6 +31,7 @@ class VideosPresenter: VideosPresenterProtocol {
     weak var view: VideosViewProtocol?
     let networkService: NetworkYoutubeManagerProtocol
     let persistanceService: PersistanceManagerProtocol
+    let imageLoader: ImageLoader
     
     var videoModels: [VideoModel]! {
         didSet {
@@ -42,11 +46,12 @@ class VideosPresenter: VideosPresenterProtocol {
     
     required init(view: VideosViewProtocol,
                   networkService: NetworkYoutubeManagerProtocol,
+                  imageLoader: ImageLoader,
                   persistanceService: PersistanceManagerProtocol) {
         self.view = view
         self.networkService = networkService
         self.persistanceService = persistanceService
-        
+        self.imageLoader = imageLoader
         
         self.videoModels = persistanceService.loadVideoModels()
     }
@@ -68,6 +73,10 @@ class VideosPresenter: VideosPresenterProtocol {
                 }
             } 
         }
+    }
+    
+    func getImage(from path: String) -> UIImage? {
+        imageLoader.loadImage(from: path)
     }
     
     // MARK: Private helpers functions -
