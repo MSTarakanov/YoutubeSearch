@@ -31,7 +31,11 @@ class VideosTableViewCell: UITableViewCell {
                     let image = self.imageLoader.loadImage(from: path)
                     if path == self.imagePath {
                         DispatchQueue.main.async {
-                            self.videoImageView.image = image
+                            if let image = image {
+                                self.videoImageView.image = image
+                            } else {
+                                self.videoImageView.image = UIImage(named: Constants.UI.ImagesNames.logo)
+                            }
                             self.activityIndicator.stopAnimating()
                         }
                     }
