@@ -35,7 +35,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
                 fatalError(error.localizedDescription)
             }
         }
-        // CAUTION: Incomment only for testing
+        // CAUTION: Uncomment only for testing
         // self.clearImageModels()
     }
     
@@ -107,6 +107,9 @@ final class CoreDataManager: PersistanceManagerProtocol {
         }
         guard imageEntities.count < 2 else {
             print("[DEBUG] Many images by one path in DB")
+            return nil
+        }
+        guard imageEntities.count == 1 else {
             return nil
         }
         guard let imageData = imageEntities.first?.imageData else {
