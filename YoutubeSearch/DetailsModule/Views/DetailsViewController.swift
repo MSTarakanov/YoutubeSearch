@@ -11,7 +11,7 @@ class DetailsViewController: UIViewController {
 
     var presenter: DetailsPresenterProtocol!
     
-    // MARK: UI privates
+    // MARK: UI privates -
     
     // TODO: subclasses of uiview/uilabel
     private let prewiewView: UIView = {
@@ -101,14 +101,48 @@ class DetailsViewController: UIViewController {
         return button
     }()
     
+    // MARK: StackViews -
+    
+    
+    // MARK: VC Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemGray
+        addSubviews()
+        addConstraints()
+    }
+    
+    // MARK: UI setup helpers functions -
+    private func addSubviews() {
+        let mainStackView = UIStackView()
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView.axis = .vertical
+        mainStackView.backgroundColor = .cyan
+        view.addSubview(mainStackView)
+        
+        mainStackView.addArrangedSubview(prewiewView)
+        
+        NSLayoutConstraint.activate([
+            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            mainStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            
+            prewiewView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            prewiewView.heightAnchor.constraint(equalTo: prewiewView.widthAnchor, multiplier: 9/16)
+            
+        ])
+        
+    }
+    
+    private func addConstraints() {
+        
     }
 
 }
 
+
+// MARK: DetailsViewProtocol extension -
 extension DetailsViewController: DetailsViewProtocol {
     
 }
