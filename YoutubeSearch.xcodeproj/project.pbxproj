@@ -306,9 +306,8 @@
 		09EE34B7273F7C9A00B1030F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				09EE34BA273F7D0B00B1030F /* DetailsModel.swift */,
-				09EE34C027405DBF00B1030F /* VideoResponseModel.swift */,
-				09EE34C227405DCD00B1030F /* ChannelResponseModel.swift */,
+				09EE34C52740608700B1030F /* NetworkModels */,
+				09EE34C42740607E00B1030F /* CleanModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -327,6 +326,23 @@
 				09EE34BE273F7ED500B1030F /* DetailsViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		09EE34C42740607E00B1030F /* CleanModels */ = {
+			isa = PBXGroup;
+			children = (
+				09EE34BA273F7D0B00B1030F /* DetailsModel.swift */,
+			);
+			path = CleanModels;
+			sourceTree = "<group>";
+		};
+		09EE34C52740608700B1030F /* NetworkModels */ = {
+			isa = PBXGroup;
+			children = (
+				09EE34C027405DBF00B1030F /* VideoResponseModel.swift */,
+				09EE34C227405DCD00B1030F /* ChannelResponseModel.swift */,
+			);
+			path = NetworkModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
