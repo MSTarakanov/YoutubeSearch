@@ -115,7 +115,7 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemGray
+        view.backgroundColor = Constants.UI.Colors.primary
         addSubviews()
         addConstraints()
     }
@@ -126,7 +126,9 @@ class DetailsViewController: UIViewController {
         let mainStackView = UIStackView()
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         mainStackView.axis = .vertical
-        mainStackView.backgroundColor = .cyan
+        mainStackView.alignment = .center
+        mainStackView.spacing = 24
+        //mainStackView.backgroundColor = .cyan
         
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(prewiewView)
@@ -134,6 +136,9 @@ class DetailsViewController: UIViewController {
         let labelsStackView = UIStackView()
         labelsStackView.translatesAutoresizingMaskIntoConstraints = false
         labelsStackView.axis = .vertical
+        labelsStackView.spacing = 8
+        labelsStackView.isLayoutMarginsRelativeArrangement = true
+        labelsStackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
         
         labelsStackView.addArrangedSubview(videoTitleLable)
         labelsStackView.addArrangedSubview(viewsCountLabel)
@@ -165,17 +170,22 @@ class DetailsViewController: UIViewController {
         let channelPreviewStackView = UIStackView()
         channelPreviewStackView.translatesAutoresizingMaskIntoConstraints = false
         channelPreviewStackView.axis = .horizontal
+        channelPreviewStackView.spacing = 8
         
         let channelStackView = UIStackView()
         channelStackView.translatesAutoresizingMaskIntoConstraints = false
         channelStackView.axis = .horizontal
         channelStackView.distribution = .fillEqually
+        channelStackView.isLayoutMarginsRelativeArrangement = true
+        channelStackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
         
         channelPreviewStackView.addArrangedSubview(channelImageView)
         channelPreviewStackView.addArrangedSubview(channelTitleLabel)
         channelStackView.addArrangedSubview(channelPreviewStackView)
         channelStackView.addArrangedSubview(subsCountLabel)
         mainStackView.addArrangedSubview(channelStackView)
+        
+        mainStackView.addArrangedSubview(watchOnYoutubeButton)
         
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -196,6 +206,7 @@ class DetailsViewController: UIViewController {
             channelImageView.widthAnchor.constraint(equalToConstant: 44),
             channelImageView.heightAnchor.constraint(equalTo: channelImageView.widthAnchor),
             channelStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
+            
         ])
         
     }
