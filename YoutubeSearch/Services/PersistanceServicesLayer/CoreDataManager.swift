@@ -14,7 +14,7 @@ protocol PersistanceManagerProtocol {
     func clearVideoModels()
     
     func save(imageModel: ImageModel)
-    func getImage(with path: String) -> UIImage
+    func getImage(with path: String) -> UIImage?
     func clearImageModels()
 }
 
@@ -29,15 +29,11 @@ final class CoreDataManager: PersistanceManagerProtocol {
     
     private init() {
         self.storeContainer = NSPersistentContainer(name: modelName)
-    }
-    
-    // Load store (SQLite object)
-    func initCoreData(completion: @escaping () -> Void) {
-        storeContainer.loadPersistentStores { _, error in
+        // Load store (SQLite object)
+        self.storeContainer.loadPersistentStores { _, error in
             if let error = error {
                 fatalError(error.localizedDescription)
             }
-            completion()
         }
     }
     
@@ -100,8 +96,26 @@ final class CoreDataManager: PersistanceManagerProtocol {
         }
     }
     
-    func getImage(with path: String) -> UIImage {
-        <#code#>
+    func getImage(with path: String) -> UIImage? {
+        let fetchRequest: NSFetchRequest = ImageEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "path == %@", path)
+        guard let imageEntities = try? storeContainer.viewContext.fetch(fetchRequest) else {
+            print("[DEBUG] CoreData imageEntity fetch error")
+            return nil
+        }
+        guard imageEntities.count == 1 else {
+            print("[DEBUG] Many images by one path in DB")
+            return nil
+        }
+        guard let imageData = imageEntities.first?.imageData else {
+            print("[DEBUG] No data for imageEntity")
+            return nil
+        }
+        guard let image = UIImage(data: imageData) else {
+            print("[DEBUG] Bad try to convert data to UIImage")
+            return nil
+        }
+        return image
     }
     
     func clearImageModels() {
