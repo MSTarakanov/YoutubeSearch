@@ -9,6 +9,8 @@ import Foundation
 
 protocol NetworkYoutubeManagerProtocol {
     func getVideos(with query: String, completion: @escaping (Result<SearchResponseModel?, NetworkError>) -> Void)
+    func getVideoDetails(by videoID: String, completion: @escaping (Result<VideoResponseModel?, NetworkError>) -> Void)
+    func getChannelDetails(by channelID: String, completion: @escaping (Result<ChannelResponseModel?, NetworkError>) -> Void)
 }
 
 // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyANZhJ-amES3tz3iMFcuDPbuH1YjtkLYqQ
@@ -68,6 +70,14 @@ final class NetworkYoutubeManager: NetworkYoutubeManagerProtocol {
             }
         }
         task.resume()
+    }
+    
+    func getVideoDetails(by videoID: String, completion: @escaping (Result<VideoResponseModel?, NetworkError>) -> Void) {
+        
+    }
+    
+    func getChannelDetails(by channelID: String, completion: @escaping (Result<ChannelResponseModel?, NetworkError>) -> Void) {
+        
     }
 }
 

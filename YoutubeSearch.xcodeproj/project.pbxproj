@@ -36,6 +36,8 @@
 		09EE34BB273F7D0B00B1030F /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34BA273F7D0B00B1030F /* DetailsModel.swift */; };
 		09EE34BD273F7DEB00B1030F /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34BC273F7DEB00B1030F /* DetailsPresenter.swift */; };
 		09EE34BF273F7ED500B1030F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34BE273F7ED500B1030F /* DetailsViewController.swift */; };
+		09EE34C127405DBF00B1030F /* VideoResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34C027405DBF00B1030F /* VideoResponseModel.swift */; };
+		09EE34C327405DCD00B1030F /* ChannelResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34C227405DCD00B1030F /* ChannelResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		09EE34BA273F7D0B00B1030F /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 		09EE34BC273F7DEB00B1030F /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		09EE34BE273F7ED500B1030F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		09EE34C027405DBF00B1030F /* VideoResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponseModel.swift; sourceTree = "<group>"; };
+		09EE34C227405DCD00B1030F /* ChannelResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +307,8 @@
 			isa = PBXGroup;
 			children = (
 				09EE34BA273F7D0B00B1030F /* DetailsModel.swift */,
+				09EE34C027405DBF00B1030F /* VideoResponseModel.swift */,
+				09EE34C227405DCD00B1030F /* ChannelResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -467,11 +473,13 @@
 				09EE34BD273F7DEB00B1030F /* DetailsPresenter.swift in Sources */,
 				090C436E273C4BA2006D2FB5 /* AppDelegate.swift in Sources */,
 				090C439E273C518D006D2FB5 /* VideosViewController.swift in Sources */,
+				09EE34C327405DCD00B1030F /* ChannelResponseModel.swift in Sources */,
 				090C43DC273DB39B006D2FB5 /* SearchResponseModel.swift in Sources */,
 				09EE34B4273F3C3700B1030F /* ImageModel.swift in Sources */,
 				090C43DF273DD8BE006D2FB5 /* CoreDataManager.swift in Sources */,
 				090C4370273C4BA2006D2FB5 /* SceneDelegate.swift in Sources */,
 				09EE34A6273F246700B1030F /* ImageLoader.swift in Sources */,
+				09EE34C127405DBF00B1030F /* VideoResponseModel.swift in Sources */,
 				090C43AB273CC875006D2FB5 /* VideoModel.swift in Sources */,
 				090C43DA273DB0A3006D2FB5 /* NetworkYoutubeManager.swift in Sources */,
 				090C43A9273CC85A006D2FB5 /* VideosPresenter.swift in Sources */,

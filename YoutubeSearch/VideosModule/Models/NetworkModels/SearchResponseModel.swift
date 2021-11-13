@@ -15,15 +15,15 @@ import Foundation
 struct SearchResponseModel: Codable {
     let kind, etag, nextPageToken, regionCode: String?
     let pageInfo: PageInfo?
-    let items: [Item]?
+    let items: [SearchItem]?
 }
 
 // MARK: - Item
-struct Item: Codable {
+struct SearchItem: Codable {
     let kind: ItemKind?
     let etag: String?
     let id: ID?
-    let snippet: Snippet?
+    let snippet: SearchSnippet?
 }
 
 // MARK: - ID
@@ -47,7 +47,7 @@ enum ItemKind: String, Codable {
 }
 
 // MARK: - Snippet
-struct Snippet: Codable {
+struct SearchSnippet: Codable {
     let publishedAt: String
     let channelID, title, snippetDescription: String?
     let thumbnails: Thumbnails?

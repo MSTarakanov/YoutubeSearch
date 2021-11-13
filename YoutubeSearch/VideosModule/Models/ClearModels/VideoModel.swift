@@ -13,7 +13,7 @@ struct VideoModel {
     let channelTitle: String
     let defaultThumbnailsUrl: String
     
-    init?(item: Item) {
+    init?(item: SearchItem) {
         guard
             let videoID = item.id?.videoID,
             let title = item.snippet?.title,
