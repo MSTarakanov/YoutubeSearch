@@ -29,7 +29,15 @@ class VideosPresenter: VideosPresenterProtocol {
     let networkService: NetworkYoutubeManagerProtocol
     let persistanceService: PersistanceManagerProtocol
     
-    var videoModels: [VideoModel]!
+    var videoModels: [VideoModel]! {
+        didSet {
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.persistanceService.clearImageModels()
+                self.persistanceService.clearVideoModels()
+                self.persistanceService.save(videoModels: self.videoModels)
+            }
+        }
+    }
     
     required init(view: VideosViewProtocol,
                   networkService: NetworkYoutubeManagerProtocol,
@@ -38,8 +46,8 @@ class VideosPresenter: VideosPresenterProtocol {
         self.networkService = networkService
         self.persistanceService = persistanceService
         
-        self.videoModels = []
-        // try to get data from pers
+        
+        self.videoModels = persistanceService.loadVideoModels()
     }
     
     // MARK: Presenter functions -
