@@ -5,7 +5,6 @@
 //  Created by Максим Тараканов on 13.11.2021.
 //
 
-import Foundation
 import UIKit
 
 protocol ImageLoaderProtocol {
@@ -25,6 +24,7 @@ class ImageLoader: ImageLoaderProtocol {
                 print("[DEBUG] no image from data with path: \(path)")
                 return nil
             }
+            // save(image, path)
             return image
         } catch {
             print("[DEBUG] Error with data from \(path) with error: \(error.localizedDescription)")

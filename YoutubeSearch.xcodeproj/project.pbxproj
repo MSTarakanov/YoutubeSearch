@@ -32,6 +32,7 @@
 		09EE34A6273F246700B1030F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34A5273F246700B1030F /* ImageLoader.swift */; };
 		09EE34B1273F3A1500B1030F /* ImageEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34AF273F3A1500B1030F /* ImageEntity+CoreDataClass.swift */; };
 		09EE34B2273F3A1500B1030F /* ImageEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34B0273F3A1500B1030F /* ImageEntity+CoreDataProperties.swift */; };
+		09EE34B4273F3C3700B1030F /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE34B3273F3C3700B1030F /* ImageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		09EE34A5273F246700B1030F /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		09EE34AF273F3A1500B1030F /* ImageEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		09EE34B0273F3A1500B1030F /* ImageEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		09EE34B3273F3C3700B1030F /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				090C43E8273DE7BA006D2FB5 /* NetworkModels */,
 				090C43E7273DE7A9006D2FB5 /* PersistanceModels */,
 				090C43AA273CC875006D2FB5 /* VideoModel.swift */,
+				09EE34B3273F3C3700B1030F /* ImageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				090C436E273C4BA2006D2FB5 /* AppDelegate.swift in Sources */,
 				090C439E273C518D006D2FB5 /* VideosViewController.swift in Sources */,
 				090C43DC273DB39B006D2FB5 /* SearchResponseModel.swift in Sources */,
+				09EE34B4273F3C3700B1030F /* ImageModel.swift in Sources */,
 				090C43DF273DD8BE006D2FB5 /* CoreDataManager.swift in Sources */,
 				090C4370273C4BA2006D2FB5 /* SceneDelegate.swift in Sources */,
 				09EE34A6273F246700B1030F /* ImageLoader.swift in Sources */,
