@@ -8,9 +8,9 @@
 import Foundation
 
 struct DetailsModel {
-    let viewsCount: Int?
-    let likesCount: Int?
-    let dislikesCount: Int?
-    let subsCount: Int?
-    let channelImageUrl: String?
+    var viewsCount: Int?
+    var likesCount: Int?
+    var dislikesCount: Int?
+    var subsCount: Int?
+    var channelImageUrl: String?
 }

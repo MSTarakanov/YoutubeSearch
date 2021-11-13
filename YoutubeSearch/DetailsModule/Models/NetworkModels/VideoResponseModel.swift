@@ -25,18 +25,12 @@ struct VideoItem: Codable {
 // MARK: - ContentDetails
 struct VideoContentDetails: Codable {
     let duration, dimension, definition, caption: String?
-    let licensedContent: Bool?
-    let contentRating: ContentRating?
     let projection: String?
-}
-
-// MARK: - ContentRating
-struct ContentRating: Codable {
 }
 
 // MARK: - Snippet
 struct VideoSnippet: Codable {
-    let publishedAt: Date?
+    let publishedAt: String?
     let channelID, title, snippetDescription: String?
     let thumbnails: Thumbnails?
     let channelTitle: String?

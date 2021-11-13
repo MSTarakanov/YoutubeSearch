@@ -21,7 +21,7 @@ protocol DetailsPresenterProtocol: AnyObject {
     
     var videoModel: VideoModel { get set }
     
-    func getVideoWithDetails(_ videoID: String)
+    func getVideoWithDetails()
     func getImage(from path: String) -> UIImage?
 }
 
@@ -50,11 +50,34 @@ class DetailsPresenter: DetailsPresenterProtocol {
         
     }
     
-    func getVideoWithDetails(_ videoID: String) {
-        
+    func getVideoWithDetails() {
+        networkService.getVideoDetails(by: videoModel.videoID) { [weak self] result in
+            switch result {
+            case .success(let videoResponseModel):
+                if let videoResponseModel = videoResponseModel {
+                    self?.videoModel.details = self?.updateVideodetails(with: videoResponseModel, oldVideoDetails: (self?.videoModel.details))
+                    self?.view?.success()
+                }
+            case .failure(let error):
+                self?.view?.failure(errorMessage: error.localizedDescription)
+            }
+        }
     }
     
     func getImage(from path: String) -> UIImage? {
         imageLoader.loadImage(from: path)
+    }
+    
+    // MARK: Helpers functions
+    private func updateVideodetails(with videoResponseModel: VideoResponseModel, oldVideoDetails: DetailsModel?) -> DetailsModel? {
+        guard let videoItem = videoResponseModel.items?.first else {
+            return oldVideoDetails
+        }
+        let detailsModel = DetailsModel(viewsCount: Int(videoItem.statistics?.viewCount ?? ""),
+                                        likesCount: Int(videoItem.statistics?.likeCount ?? ""),
+                                        dislikesCount: Int(videoItem.statistics?.dislikeCount ?? ""),
+                                        subsCount: oldVideoDetails?.subsCount,
+                                        channelImageUrl: oldVideoDetails?.channelImageUrl)
+        return detailsModel
     }
 }

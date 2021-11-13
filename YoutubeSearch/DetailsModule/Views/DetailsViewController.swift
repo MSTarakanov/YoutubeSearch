@@ -181,6 +181,9 @@ class DetailsViewController: UIViewController {
         channelTitleLabel.text = presenter.videoModel.channelTitle
         prewiewView.image = presenter.getImage(from: presenter.videoModel.defaultThumbnailsUrl) ?? UIImage(named: Constants.UI.ImagesNames.logoWithTextVertical)
         
+        presenter.getVideoWithDetails()
+        
+        
         addSubviews()
         addConstraints()
     }
