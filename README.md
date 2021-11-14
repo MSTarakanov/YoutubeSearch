@@ -12,7 +12,7 @@ You can search videos and check their details
 - Xib
 - Custom Cells
 ---
-- NSURLSession (work with youtube API)
+- NSURLSession (work with youtube RESTAPI)
 - CoreData
 - GCD
 ---
