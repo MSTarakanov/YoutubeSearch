@@ -49,10 +49,10 @@ struct Constants {
         static let yotubeSearchUrl = baseYoutubeUrl + "search"
         static let yotubeVideoDetailsUrl = baseYoutubeUrl + "videos"
         static let yotubeChannelDetailsUrl = baseYoutubeUrl + "channels"
-        static let watchBaseUrl = ""
+        static let watchUrl = "https://www.youtube.com/watch?v="
         
         static func urlToWatch(video id: String) -> String {
-            return watchBaseUrl + id
+            return watchUrl + id
         }
     }
 }

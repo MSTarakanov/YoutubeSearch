@@ -23,6 +23,7 @@ protocol DetailsPresenterProtocol: AnyObject {
     
     func getVideoWithDetails()
     func getImage(from path: String) -> UIImage?
+    func watchVideo()
 }
 
 class DetailsPresenter: DetailsPresenterProtocol {
@@ -82,6 +83,15 @@ class DetailsPresenter: DetailsPresenterProtocol {
     
     func getImage(from path: String) -> UIImage? {
         imageLoader.loadImage(from: path)
+    }
+    
+    func watchVideo() {
+        let urlString = Constants.Network.urlToWatch(video: videoModel.videoID)
+        guard let url = URL(string: urlString) else {
+            print("[DEBUG] Bad urlString: \(urlString)")
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     // MARK: Helpers functions

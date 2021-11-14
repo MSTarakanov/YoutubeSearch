@@ -103,6 +103,7 @@ class DetailsViewController: UIViewController {
         button.configuration?.image = UIImage(systemName: "play")
         button.configuration?.imagePadding = 6
         button.configuration?.imagePlacement = .leading
+        button.addTarget(self, action: #selector(watchDidTap), for: .touchUpInside)
         return button
     }()
     
@@ -236,6 +237,12 @@ class DetailsViewController: UIViewController {
             channelStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
             
         ])
+    }
+    
+    // MARK: Actions
+    @objc
+    func watchDidTap() {
+        presenter.watchVideo()
     }
 
 }
