@@ -42,9 +42,12 @@ class VideosViewController: UIViewController {
         videosTableView.delegate = self
         searchBar.delegate = self
         
+        addHideKeyboardGesture()
+        
         addNavigationItemImage()
         addConstraints()
     }
+    
     
     // MARK: Private func helpers -
     private func addConstraints() {
@@ -60,6 +63,16 @@ class VideosViewController: UIViewController {
             videosTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
         ])
     
+    }
+    
+    private func addHideKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    func viewDidTap() {
+        searchBar.endEditing(true)
     }
     
     private func addNavigationItemImage() {
@@ -86,6 +99,7 @@ extension VideosViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("[DEBUG] Search button at keyboard clicked")
         presenter.searchVideos(with: searchBar.text ?? "")
+        searchBar.resignFirstResponder()
     }
 }
 
@@ -116,5 +130,9 @@ extension VideosViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let detailViewController = ModuleBuilder.buildDetailsModule(videoModel: presenter.videoModels[indexPath.row])
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
     }
 }
