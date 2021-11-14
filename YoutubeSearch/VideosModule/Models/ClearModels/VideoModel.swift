@@ -20,7 +20,7 @@ struct VideoModel {
             let videoID = item.id?.videoID,
             let title = item.snippet?.title,
             let channelTitle = item.snippet?.channelTitle,
-            let defaultThumbnailsUrl = item.snippet?.thumbnails?.thumbnailsDefault?.url,
+            let defaultThumbnailsUrl = item.snippet?.thumbnails?.medium?.url,
             let channelID = item.snippet?.channelID
         else {
             return nil

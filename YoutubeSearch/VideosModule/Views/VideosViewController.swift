@@ -42,8 +42,6 @@ class VideosViewController: UIViewController {
         videosTableView.delegate = self
         searchBar.delegate = self
         
-        addHideKeyboardGesture()
-        
         addNavigationItemImage()
         addConstraints()
     }
@@ -63,16 +61,6 @@ class VideosViewController: UIViewController {
             videosTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
         ])
     
-    }
-    
-    private func addHideKeyboardGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc
-    func viewDidTap() {
-        searchBar.endEditing(true)
     }
     
     private func addNavigationItemImage() {

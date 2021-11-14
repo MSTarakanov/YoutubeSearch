@@ -14,10 +14,13 @@ class DetailsViewController: UIViewController {
     
     // MARK: UI privates -
     
-    private let playerView = YTPlayerView()
+    private let playerView: YTPlayerView = {
+        let player = YTPlayerView()
+        player.translatesAutoresizingMaskIntoConstraints = false
+        return player
+    }()
     
     // TODO: subclasses of uiview/uilabel and delete text
-    
     private let videoTitleLable: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -179,9 +182,6 @@ class DetailsViewController: UIViewController {
         
         presenter.getVideoWithDetails()
         playerView.load(withVideoId: presenter.videoModel.videoID)
-        playerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         
         addSubviews()
         addConstraints()
@@ -231,6 +231,7 @@ class DetailsViewController: UIViewController {
             channelImageView.widthAnchor.constraint(equalToConstant: 44),
             channelImageView.heightAnchor.constraint(equalTo: channelImageView.widthAnchor),
             channelStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
+            
             
             playerView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
             playerView.heightAnchor.constraint(equalTo: playerView.widthAnchor, multiplier: 9/16)
