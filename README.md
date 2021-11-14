@@ -17,3 +17,16 @@ You can search videos and check their details
 - GCD
 ---
 - YoutubePlayer inside!
+---
+Вход в приложение:
+</br>
+<img src="https://i.yapx.ru/PGr7e.gif" style="width:250px; margin: 10px"/>
+</br>
+Вход в приложение:
+</br>
+<img src="https://i.yapx.ru/PGr7e.gif" style="width:250px; margin: 10px"/>
+</br>
+Вход в приложение:
+</br>
+<img src="https://i.yapx.ru/PGr7e.gif" style="width:250px; margin: 10px"/>
+</br>
