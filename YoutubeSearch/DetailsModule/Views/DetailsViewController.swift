@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import youtube_ios_player_helper
 
 class DetailsViewController: UIViewController {
 
@@ -13,14 +14,9 @@ class DetailsViewController: UIViewController {
     
     // MARK: UI privates -
     
+    private let playerView = YTPlayerView()
+    
     // TODO: subclasses of uiview/uilabel and delete text
-    private let prewiewView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Constants.UI.Colors.secondary
-        view.contentMode = .scaleToFill
-        return view
-    }()
     
     private let videoTitleLable: UILabel = {
         let label = UILabel()
@@ -180,9 +176,10 @@ class DetailsViewController: UIViewController {
 
         videoTitleLable.text = presenter.videoModel.title
         channelTitleLabel.text = presenter.videoModel.channelTitle
-        prewiewView.image = presenter.getImage(from: presenter.videoModel.defaultThumbnailsUrl) ?? UIImage(named: Constants.UI.ImagesNames.logoWithTextVertical)
         
         presenter.getVideoWithDetails()
+        playerView.load(withVideoId: presenter.videoModel.videoID)
+        playerView.translatesAutoresizingMaskIntoConstraints = false
         
         
         
@@ -193,7 +190,8 @@ class DetailsViewController: UIViewController {
     // MARK: UI setup helpers functions -
     private func addSubviews() {
         view.addSubview(mainStackView)
-        mainStackView.addArrangedSubview(prewiewView)
+        
+        mainStackView.addArrangedSubview(playerView)
         
         labelsStackView.addArrangedSubview(videoTitleLable)
         labelsStackView.addArrangedSubview(viewsCountLabel)
@@ -222,9 +220,6 @@ class DetailsViewController: UIViewController {
             mainStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
             mainStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
-            prewiewView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-            prewiewView.heightAnchor.constraint(equalTo: prewiewView.widthAnchor, multiplier: 9/16),
-            
             labelsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
             
             likesImageView.widthAnchor.constraint(equalTo: likesImageView.heightAnchor),
@@ -236,6 +231,9 @@ class DetailsViewController: UIViewController {
             channelImageView.widthAnchor.constraint(equalToConstant: 44),
             channelImageView.heightAnchor.constraint(equalTo: channelImageView.widthAnchor),
             channelStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
+            
+            playerView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
+            playerView.heightAnchor.constraint(equalTo: playerView.widthAnchor, multiplier: 9/16)
             
         ])
     }

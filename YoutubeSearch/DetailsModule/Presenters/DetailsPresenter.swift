@@ -46,8 +46,7 @@ class DetailsPresenter: DetailsPresenterProtocol {
         self.networkService = networkService
         self.persistanceService = persistanceService
         self.imageLoader = imageLoader
-        
-        print("[DEBUG] channelID: \(videoModel.channelID)")
+
         // TODO: get details from CD
         
     }
