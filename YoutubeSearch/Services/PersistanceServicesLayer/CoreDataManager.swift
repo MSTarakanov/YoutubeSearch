@@ -36,7 +36,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
             }
         }
         // CAUTION: Uncomment only for testing
-        // self.clearImageModels()
+         self.clearImageModels()
     }
     
     // MARK: Videos functions -
@@ -80,6 +80,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
         videoEntity.title = videoModel.title
         videoEntity.channelTitle = videoModel.channelTitle
         videoEntity.defaultThumbnailsUrl = videoModel.defaultThumbnailsUrl
+        videoEntity.channelID = videoModel.channelID
     }
     
     // MARK: Images functions -

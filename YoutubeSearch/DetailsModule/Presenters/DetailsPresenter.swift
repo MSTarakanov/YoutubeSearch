@@ -46,6 +46,7 @@ class DetailsPresenter: DetailsPresenterProtocol {
         self.persistanceService = persistanceService
         self.imageLoader = imageLoader
         
+        print("[DEBUG] channelID: \(videoModel.channelID)")
         // TODO: get details from CD
         
     }
@@ -57,6 +58,19 @@ class DetailsPresenter: DetailsPresenterProtocol {
                 case .success(let videoResponseModel):
                     if let videoResponseModel = videoResponseModel {
                         self?.videoModel.details = self?.updateVideodetails(with: videoResponseModel, oldVideoDetails: (self?.videoModel.details))
+                        self?.view?.updateUI()
+                    }
+                case .failure(let error):
+                    self?.view?.failure(errorMessage: error.localizedDescription)
+                }
+            }
+        }
+        networkService.getChannelDetails(by: videoModel.channelID) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let channelResponseModel):
+                    if let channelResponseModel = channelResponseModel {
+                        self?.videoModel.details = self?.updateVideodetails(with: channelResponseModel, oldVideoDetails: (self?.videoModel.details))
                         self?.view?.updateUI()
                     }
                 case .failure(let error):
@@ -80,6 +94,18 @@ class DetailsPresenter: DetailsPresenterProtocol {
                                         dislikesCount: Int(videoItem.statistics?.dislikeCount ?? ""),
                                         subsCount: oldVideoDetails?.subsCount,
                                         channelImageUrl: oldVideoDetails?.channelImageUrl)
+        return detailsModel
+    }
+    
+    private func updateVideodetails(with channelResponseModel: ChannelResponseModel, oldVideoDetails: DetailsModel?) -> DetailsModel? {
+        guard let channelItem = channelResponseModel.items?.first else {
+            return oldVideoDetails
+        }
+        let detailsModel = DetailsModel(viewsCount: oldVideoDetails?.viewsCount,
+                                        likesCount: oldVideoDetails?.likesCount,
+                                        dislikesCount: oldVideoDetails?.dislikesCount,
+                                        subsCount: Int(channelItem.statistics?.subscriberCount ?? ""),
+                                        channelImageUrl: channelItem.snippet?.thumbnails?.thumbnailsDefault?.url)
         return detailsModel
     }
 }

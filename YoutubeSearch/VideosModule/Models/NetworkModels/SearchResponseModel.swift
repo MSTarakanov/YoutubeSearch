@@ -40,6 +40,7 @@ struct ID: Codable {
 enum IDKind: String, Codable {
     case youtubeVideo = "youtube#video"
     case youtubeChannel = "youtube#channel"
+    case youtubePlaylist = "youtube#playlist"
 }
 
 enum ItemKind: String, Codable {

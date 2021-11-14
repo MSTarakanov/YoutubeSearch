@@ -5,6 +5,7 @@
         <attribute name="path" optional="YES" attributeType="String"/>
     </entity>
     <entity name="VideoEntity" representedClassName=".VideoEntity" syncable="YES">
+        <attribute name="channelID" attributeType="String" defaultValueString=""/>
         <attribute name="channelTitle" attributeType="String" defaultValueString=""/>
         <attribute name="defaultThumbnailsUrl" attributeType="String" defaultValueString=""/>
         <attribute name="title" attributeType="String" defaultValueString=""/>
@@ -16,7 +17,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="VideoEntity" positionX="-63" positionY="-18" width="128" height="89"/>
         <element name="ImageEntity" positionX="-45" positionY="27" width="128" height="59"/>
+        <element name="VideoEntity" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

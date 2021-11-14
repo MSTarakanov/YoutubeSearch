@@ -252,11 +252,15 @@ extension DetailsViewController: DetailsViewProtocol {
         if let viewsCount = presenter.videoModel.details?.viewsCount {
             viewsCountLabel.text = "\(viewsCount)"
         }
+        if let subsCount = presenter.videoModel.details?.subsCount {
+            subsCountLabel.text = "\(subsCount)"
+        }
         // TODO: weak self in animate? or not?
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
             self?.likesStackView.isHidden = self?.likesCountLabel.text == nil
             self?.dislikesStackView.isHidden = self?.dislikesCountLabel.text == nil
             self?.viewsCountLabel.isHidden = self?.viewsCountLabel.text == nil
+            self?.subsCountLabel.isHidden = self?.subsCountLabel.text == nil
             self?.mainStackView.layoutIfNeeded()
         }
     }
