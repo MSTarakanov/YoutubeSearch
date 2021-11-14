@@ -13,7 +13,7 @@ You can search videos and check their details
 - Custom Cells
 ---
 - NSURLSession (work with youtube API)
-- CoreData to cache
+- CoreData
 - GCD
 ---
 PODS:
