@@ -161,14 +161,12 @@
 			isa = PBXGroup;
 			children = (
 				090C43D7273DB054006D2FB5 /* Services */,
-				090C43B5273D76B2006D2FB5 /* ModuleBuilder.swift */,
 				090C43B3273D72DB006D2FB5 /* VideosModule */,
 				09EE34B6273F7C6800B1030F /* DetailsModule */,
 				090C439F273CBCE8006D2FB5 /* Utilities */,
 				090C43B4273D7319006D2FB5 /* Setup */,
 				090C4376273C4BA3006D2FB5 /* Assets.xcassets */,
 				090C437B273C4BA3006D2FB5 /* Info.plist */,
-				090C4378273C4BA3006D2FB5 /* LaunchScreen.storyboard */,
 			);
 			path = YoutubeSearch;
 			sourceTree = "<group>";
@@ -249,8 +247,10 @@
 		090C43B4273D7319006D2FB5 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				090C43B5273D76B2006D2FB5 /* ModuleBuilder.swift */,
 				090C436D273C4BA2006D2FB5 /* AppDelegate.swift */,
 				090C436F273C4BA2006D2FB5 /* SceneDelegate.swift */,
+				090C4378273C4BA3006D2FB5 /* LaunchScreen.storyboard */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -372,7 +372,6 @@
 				16ADA32DE7C875E7BFE71EDB /* Pods-YoutubeSearchTests.debug.xcconfig */,
 				06C17EC22A6F257102BBC39E /* Pods-YoutubeSearchTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
