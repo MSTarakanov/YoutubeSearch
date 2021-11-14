@@ -264,8 +264,9 @@ extension DetailsViewController: DetailsViewProtocol {
         if let subsCount = presenter.videoModel.details?.subsCount {
             subsCountLabel.text = subsCount.roundedWithAbbreviations + " subscribers"
         }
-        if let channelImageUrl = presenter.videoModel.details?.channelImageUrl {
-            channelImageView.image = presenter.getImage(from: channelImageUrl)
+        if let channelImageUrl = presenter.videoModel.details?.channelImageUrl {            channelImageView.image = presenter.getImage(from: channelImageUrl)
+            channelImageView.layer.cornerRadius = channelImageView.frame.width / 2
+            channelImageView.clipsToBounds = true
         }
         // TODO: weak self in animate? or not?
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
