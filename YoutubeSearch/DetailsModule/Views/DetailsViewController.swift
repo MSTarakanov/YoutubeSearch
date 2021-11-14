@@ -258,10 +258,10 @@ extension DetailsViewController: DetailsViewProtocol {
             dislikesCountLabel.text = "\(dislikesCount)"
         }
         if let viewsCount = presenter.videoModel.details?.viewsCount {
-            viewsCountLabel.text = "\(viewsCount)"
+            viewsCountLabel.text = viewsCount.formattedWithSeparator + " views"
         }
         if let subsCount = presenter.videoModel.details?.subsCount {
-            subsCountLabel.text = "\(subsCount)"
+            subsCountLabel.text = subsCount.roundedWithAbbreviations + " subscribers"
         }
         if let channelImageUrl = presenter.videoModel.details?.channelImageUrl {
             channelImageView.image = presenter.getImage(from: channelImageUrl)
