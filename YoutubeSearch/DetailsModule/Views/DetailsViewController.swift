@@ -183,6 +183,7 @@ class DetailsViewController: UIViewController {
         presenter.getVideoWithDetails()
         
         
+        
         addSubviews()
         addConstraints()
     }
@@ -254,6 +255,9 @@ extension DetailsViewController: DetailsViewProtocol {
         }
         if let subsCount = presenter.videoModel.details?.subsCount {
             subsCountLabel.text = "\(subsCount)"
+        }
+        if let channelImageUrl = presenter.videoModel.details?.channelImageUrl {
+            channelImageView.image = presenter.getImage(from: channelImageUrl)
         }
         // TODO: weak self in animate? or not?
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
