@@ -77,7 +77,7 @@ extension VideosViewController: VideosViewProtocol {
     }
     
     func failure(errorMessage: String) {
-        print(errorMessage)
+        self.alert(message: errorMessage)
     }
 }
 

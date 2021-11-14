@@ -279,6 +279,6 @@ extension DetailsViewController: DetailsViewProtocol {
     }
     
     func failure(errorMessage: String) {
-        
+        self.alert(message: errorMessage)
     }
 }
