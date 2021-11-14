@@ -22,6 +22,7 @@ struct Constants {
             static let logo = "logo"
             static let logoWithTextVertical = "logo_with_text_vertical"
             static let logoWithTextHorizontal = "logo_with_text_horizontal"
+            static let profilePlaceholder = "profile_placeholder"
         }
         
         struct FontsNames {

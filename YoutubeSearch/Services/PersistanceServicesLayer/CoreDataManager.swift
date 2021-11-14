@@ -36,7 +36,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
             }
         }
         // CAUTION: Uncomment only for testing
-         self.clearImageModels()
+        // self.clearImageModels()
     }
     
     // MARK: Videos functions -

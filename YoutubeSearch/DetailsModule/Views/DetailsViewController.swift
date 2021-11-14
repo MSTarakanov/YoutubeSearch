@@ -74,6 +74,7 @@ class DetailsViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = Constants.UI.Colors.secondary
+        imageView.image = UIImage(named: Constants.UI.ImagesNames.profilePlaceholder)
         return imageView
     }()
     
