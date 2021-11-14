@@ -36,7 +36,7 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 15)
         label.textColor = Constants.UI.Colors.secondaryShapes
-        label.text = "No viewscount for this video"
+        label.isHidden = true
         return label
     }()
     
@@ -59,7 +59,6 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.shapes
-        label.text = "Likes"
         return label
     }()
     
@@ -68,7 +67,6 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.shapes
-        label.text = "Dislikes"
         return label
     }()
     
@@ -84,7 +82,6 @@ class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.shapes
-        label.text = "channelTitleLabel"
         return label
     }()
     
@@ -94,7 +91,7 @@ class DetailsViewController: UIViewController {
         label.font = .generalMedium(with: 17)
         label.textColor = Constants.UI.Colors.secondaryShapes
         label.textAlignment = .right
-        label.text = "subsCountLabel"
+        label.isHidden = true
         return label
     }()
     
@@ -142,6 +139,7 @@ class DetailsViewController: UIViewController {
         likesStackView.translatesAutoresizingMaskIntoConstraints = false
         likesStackView.axis = .vertical
         likesStackView.alignment = .center
+        likesStackView.isHidden = true
         return likesStackView
     }()
     
@@ -150,6 +148,7 @@ class DetailsViewController: UIViewController {
         dislikesStackView.translatesAutoresizingMaskIntoConstraints = false
         dislikesStackView.axis = .vertical
         dislikesStackView.alignment = .center
+        dislikesStackView.isHidden = true
         return dislikesStackView
     }()
     
@@ -176,7 +175,7 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = Constants.UI.Colors.primary
-        
+
         videoTitleLable.text = presenter.videoModel.title
         channelTitleLabel.text = presenter.videoModel.channelTitle
         prewiewView.image = presenter.getImage(from: presenter.videoModel.defaultThumbnailsUrl) ?? UIImage(named: Constants.UI.ImagesNames.logoWithTextVertical)
@@ -242,11 +241,27 @@ class DetailsViewController: UIViewController {
 
 // MARK: DetailsViewProtocol extension -
 extension DetailsViewController: DetailsViewProtocol {
-    func success() {
-        
+    func updateUI() {
+        // TODO: could be simpler
+        if let likesCount = presenter.videoModel.details?.likesCount {
+            likesCountLabel.text = "\(likesCount)"
+        }
+        if let dislikesCount = presenter.videoModel.details?.dislikesCount {
+            dislikesCountLabel.text = "\(dislikesCount)"
+        }
+        if let viewsCount = presenter.videoModel.details?.viewsCount {
+            viewsCountLabel.text = "\(viewsCount)"
+        }
+        // TODO: weak self in animate? or not?
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
+            self?.likesStackView.isHidden = self?.likesCountLabel.text == nil
+            self?.dislikesStackView.isHidden = self?.dislikesCountLabel.text == nil
+            self?.viewsCountLabel.isHidden = self?.viewsCountLabel.text == nil
+            self?.mainStackView.layoutIfNeeded()
+        }
     }
     
     func failure(errorMessage: String) {
         
-    }  
+    }
 }

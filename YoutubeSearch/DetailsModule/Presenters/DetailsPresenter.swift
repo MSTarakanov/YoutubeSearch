@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailsViewProtocol: AnyObject {
-    func success()
+    func updateUI()
     func failure(errorMessage: String)
 }
 
@@ -52,14 +52,16 @@ class DetailsPresenter: DetailsPresenterProtocol {
     
     func getVideoWithDetails() {
         networkService.getVideoDetails(by: videoModel.videoID) { [weak self] result in
-            switch result {
-            case .success(let videoResponseModel):
-                if let videoResponseModel = videoResponseModel {
-                    self?.videoModel.details = self?.updateVideodetails(with: videoResponseModel, oldVideoDetails: (self?.videoModel.details))
-                    self?.view?.success()
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let videoResponseModel):
+                    if let videoResponseModel = videoResponseModel {
+                        self?.videoModel.details = self?.updateVideodetails(with: videoResponseModel, oldVideoDetails: (self?.videoModel.details))
+                        self?.view?.updateUI()
+                    }
+                case .failure(let error):
+                    self?.view?.failure(errorMessage: error.localizedDescription)
                 }
-            case .failure(let error):
-                self?.view?.failure(errorMessage: error.localizedDescription)
             }
         }
     }
