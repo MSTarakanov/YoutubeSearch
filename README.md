@@ -27,7 +27,7 @@ PODS:
   <img src="/readme_sources/entrypoint.gif" width="30%"/>
 </kbd>
 <br/>
-<p>First search:</p>
+<p>First search: (with connection/without connection)</p>
 <kbd>
   <br/>
   <img src="/readme_sources/firstsearch.jpg" width="30%"/>
@@ -35,7 +35,7 @@ PODS:
   <img src="/readme_sources/firstsearch_without_connection.gif" width="30%"/>
 </kbd>
 <br/>
-<p>Detail view controller:</p>
+<p>Detail view controller: (with connection/without connection)</p>
 <kbd>
   <br/>
   <img src="/readme_sources/details.jpg" width="30%"/>
@@ -65,6 +65,7 @@ PODS:
 </kbd>
 <br/>
 <p>Refresh data (look dislikes count):</p>
+<p>A bit slow gif, but watch untill the end (30 sec):</p>
 <kbd>
   <br/>
   <img src="/readme_sources/refreshdata_before.jpg" width="30%"/>
