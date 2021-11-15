@@ -17,11 +17,12 @@ class DetailsViewController: UIViewController {
     private let playerView: YTPlayerView = {
         let player = YTPlayerView()
         player.translatesAutoresizingMaskIntoConstraints = false
+        player.isHidden = true
         return player
     }()
     
-    private let previewView: UIView = {
-        let view = UIView()
+    private let previewView: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -185,6 +186,7 @@ class DetailsViewController: UIViewController {
 
         videoTitleLable.text = presenter.videoModel.title
         channelTitleLabel.text = presenter.videoModel.channelTitle
+        previewView.image = presenter.getImage(from: presenter.videoModel.defaultThumbnailsUrl)
         
         presenter.getVideoWithDetails()
         
@@ -192,6 +194,7 @@ class DetailsViewController: UIViewController {
         addConstraints()
         
         playerView.load(withVideoId: presenter.videoModel.videoID)
+        playerView.delegate = self
     }
     
     // MARK: UI setup helpers functions -
@@ -291,5 +294,12 @@ extension DetailsViewController: DetailsViewProtocol {
     
     func failure(errorMessage: String) {
         self.alert(message: errorMessage)
+    }
+}
+
+// MARK: YotubePlayerDelegate -
+extension DetailsViewController: YTPlayerViewDelegate {
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        playerView.isHidden = false
     }
 }
