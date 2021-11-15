@@ -12,7 +12,20 @@ class DetailsViewController: UIViewController {
 
     var presenter: DetailsPresenterProtocol!
     
-    // MARK: UI privates -
+    // MARK: - UI privates
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.alwaysBounceVertical = true
+        scrollView.bounces = true
+        return scrollView
+    }()
+    
+    private let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pulledToRefresh), for: .valueChanged)
+        return refreshControl
+    }()
     
     private let playerView: YTPlayerView = {
         let player = YTPlayerView()
@@ -114,7 +127,7 @@ class DetailsViewController: UIViewController {
         return button
     }()
     
-    // MARK: StackViews -
+    // MARK: - StackViews
     private let mainStackView: UIStackView = {
         let mainStackView = UIStackView()
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -178,11 +191,12 @@ class DetailsViewController: UIViewController {
         return channelStackView
     }()
     
-    // MARK: VC Lifecycle -
+    // MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = Constants.UI.Colors.primary
+        scrollView.refreshControl = refreshControl
 
         videoTitleLable.text = presenter.videoModel.title
         channelTitleLabel.text = presenter.videoModel.channelTitle
@@ -197,9 +211,10 @@ class DetailsViewController: UIViewController {
         playerView.delegate = self
     }
     
-    // MARK: UI setup helpers functions -
+    // MARK: - UI setup helpers functions
     private func addSubviews() {
-        view.addSubview(mainStackView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(mainStackView)
         
         mainStackView.addArrangedSubview(previewView)
         previewView.addSubview(playerView)
@@ -227,9 +242,14 @@ class DetailsViewController: UIViewController {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-            mainStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
             labelsStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
             
@@ -254,15 +274,20 @@ class DetailsViewController: UIViewController {
         ])
     }
     
-    // MARK: Actions
+    // MARK: - Actions
     @objc
     func watchDidTap() {
         presenter.watchVideo()
     }
+    
+    @objc
+    func pulledToRefresh() {
+        presenter.getVideoWithDetails()
+    }
 
 }
 
-// MARK: DetailsViewProtocol extension -
+// MARK: - DetailsViewProtocol extension
 extension DetailsViewController: DetailsViewProtocol {
     func updateUI() {
         // TODO: could be simpler
@@ -290,6 +315,7 @@ extension DetailsViewController: DetailsViewProtocol {
             self?.subsCountLabel.isHidden = self?.subsCountLabel.text == nil
             self?.mainStackView.layoutIfNeeded()
         }
+        refreshControl.endRefreshing()
     }
     
     func failure(errorMessage: String) {
@@ -297,7 +323,7 @@ extension DetailsViewController: DetailsViewProtocol {
     }
 }
 
-// MARK: YotubePlayerDelegate -
+// MARK: - YotubePlayerDelegate
 extension DetailsViewController: YTPlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         playerView.isHidden = false
