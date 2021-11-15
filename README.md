@@ -22,7 +22,8 @@ PODS:
 <kbd>
   <p>Вход в приложение</p>
    <br/>
-  <img src="/readme_sources/1.gif" style="width:300px;"/>
+  <img src="/readme_sources/1.gif" width="300px"/>
+  <img src="/readme_sources/1.jpg" width="300px"/>
 </kbd>
 <br/>
 <kbd>
