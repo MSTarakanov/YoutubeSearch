@@ -43,12 +43,6 @@ PODS:
   <img src="/readme_sources/details_without_connection.gif" width="30%"/>
 </kbd>
 <br/>
-<p>Different details VCs:</p>
-<kbd>
-  <br/>
-  <img src="/readme_sources/moredetails.gif" width="30%"/>
-</kbd>
-<br/>
 <p>Youtube player:</p>
 <kbd>
   <br/>
