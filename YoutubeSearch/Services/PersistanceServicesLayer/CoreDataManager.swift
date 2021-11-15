@@ -41,14 +41,17 @@ final class CoreDataManager: PersistanceManagerProtocol {
     
     // MARK: Videos functions -
     func save(videoModels: [VideoModel]) {
-        for videoModel in videoModels {
-            add(videoModel: videoModel)
+        storeContainer.performBackgroundTask { context in
+            for videoModel in videoModels {
+                self.add(videoModel: videoModel, context: context)
+            }
+            do {
+                try context.save()
+            } catch {
+                print("[DEBUG] Context videos save error: \(error.localizedDescription)")
+            }
         }
-        do {
-            try storeContainer.viewContext.save()
-        } catch {
-            print("[DEBUG] Context videos save error: \(error.localizedDescription)")
-        }
+        
     }
     
     func loadVideoModels() -> [VideoModel] {
@@ -60,22 +63,24 @@ final class CoreDataManager: PersistanceManagerProtocol {
     }
     
     func clearVideoModels() {
-        guard let videoEntities = try? storeContainer.viewContext.fetch(VideoEntity.fetchRequest()) else {
-            print("[DEBUG] CoreData videoEntity fetch error")
-            return
-        }
-        for videoEntity in videoEntities {
-            storeContainer.viewContext.delete(videoEntity)
-        }
-        do {
-            try storeContainer.viewContext.save()
-        } catch {
-            print("[DEBUG] Context clear videos save error: \(error.localizedDescription)")
+        storeContainer.performBackgroundTask { context in
+            guard let videoEntities = try? context.fetch(VideoEntity.fetchRequest()) else {
+                print("[DEBUG] CoreData videoEntity fetch error")
+                return
+            }
+            for videoEntity in videoEntities {
+                context.delete(videoEntity)
+            }
+            do {
+                try context.save()
+            } catch {
+                print("[DEBUG] Context clear videos save error: \(error.localizedDescription)")
+            }
         }
     }
     // MARK: Helpers functions -
-    private func add(videoModel: VideoModel) {
-        let videoEntity = VideoEntity(context: storeContainer.viewContext)
+    private func add(videoModel: VideoModel, context: NSManagedObjectContext) {
+        let videoEntity = VideoEntity(context: context)
         videoEntity.videoID = videoModel.videoID
         videoEntity.title = videoModel.title
         videoEntity.channelTitle = videoModel.channelTitle
