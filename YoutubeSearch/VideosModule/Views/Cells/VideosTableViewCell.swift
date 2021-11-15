@@ -36,10 +36,8 @@ class VideosTableViewCell: UITableViewCell {
                             self.activityIndicator.stopAnimating()
                         }
                     }
-                    
                 }
             }
-            
         }
     }
     

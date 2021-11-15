@@ -47,7 +47,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
         do {
             try storeContainer.viewContext.save()
         } catch {
-            print("[DEBUG] Context save error: \(error.localizedDescription)")
+            print("[DEBUG] Context videos save error: \(error.localizedDescription)")
         }
     }
     
@@ -70,7 +70,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
         do {
             try storeContainer.viewContext.save()
         } catch {
-            print("[DEBUG] Context save error: \(error.localizedDescription)")
+            print("[DEBUG] Context clear videos save error: \(error.localizedDescription)")
         }
     }
     // MARK: Helpers functions -
@@ -95,7 +95,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
         do {
             try storeContainer.viewContext.save()
         } catch {
-            print("[DEBUG] Context save error: \(error.localizedDescription)")
+            print("[DEBUG] Context save image error: \(error.localizedDescription)")
         }
     }
     
@@ -135,7 +135,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
         do {
             try storeContainer.viewContext.save()
         } catch {
-            print("[DEBUG] Context save error: \(error.localizedDescription)")
+            print("[DEBUG] Context image clear save error: \(error.localizedDescription)")
         }
     }
 }
