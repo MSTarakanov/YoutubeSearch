@@ -41,14 +41,17 @@ final class CoreDataManager: PersistanceManagerProtocol {
     
     // MARK: Videos functions -
     func save(videoModels: [VideoModel]) {
-        for videoModel in videoModels {
-            add(videoModel: videoModel)
+        storeContainer.performBackgroundTask { context in
+            for videoModel in videoModels {
+                self.add(videoModel: videoModel, context: context)
+            }
+            do {
+                try context.save()
+            } catch {
+                print("[DEBUG] Context videos save error: \(error.localizedDescription)")
+            }
         }
-        do {
-            try storeContainer.viewContext.save()
-        } catch {
-            print("[DEBUG] Context videos save error: \(error.localizedDescription)")
-        }
+        
     }
     
     func loadVideoModels() -> [VideoModel] {
@@ -60,22 +63,24 @@ final class CoreDataManager: PersistanceManagerProtocol {
     }
     
     func clearVideoModels() {
-        guard let videoEntities = try? storeContainer.viewContext.fetch(VideoEntity.fetchRequest()) else {
-            print("[DEBUG] CoreData videoEntity fetch error")
-            return
-        }
-        for videoEntity in videoEntities {
-            storeContainer.viewContext.delete(videoEntity)
-        }
-        do {
-            try storeContainer.viewContext.save()
-        } catch {
-            print("[DEBUG] Context clear videos save error: \(error.localizedDescription)")
+        storeContainer.performBackgroundTask { context in
+            guard let videoEntities = try? context.fetch(VideoEntity.fetchRequest()) else {
+                print("[DEBUG] CoreData videoEntity fetch error")
+                return
+            }
+            for videoEntity in videoEntities {
+                context.delete(videoEntity)
+            }
+            do {
+                try context.save()
+            } catch {
+                print("[DEBUG] Context clear videos save error: \(error.localizedDescription)")
+            }
         }
     }
     // MARK: Helpers functions -
-    private func add(videoModel: VideoModel) {
-        let videoEntity = VideoEntity(context: storeContainer.viewContext)
+    private func add(videoModel: VideoModel, context: NSManagedObjectContext) {
+        let videoEntity = VideoEntity(context: context)
         videoEntity.videoID = videoModel.videoID
         videoEntity.title = videoModel.title
         videoEntity.channelTitle = videoModel.channelTitle
@@ -85,17 +90,19 @@ final class CoreDataManager: PersistanceManagerProtocol {
     
     // MARK: Images functions -
     func save(imageModel: ImageModel) {
-        let imageEntity = ImageEntity(context: storeContainer.viewContext)
-        imageEntity.path = imageModel.imagePath
-        guard let imageData = imageModel.image.pngData() else {
-            print("[DEBUG] No data from image")
-            return
-        }
-        imageEntity.imageData = imageData
-        do {
-            try storeContainer.viewContext.save()
-        } catch {
-            print("[DEBUG] Context save image error: \(error.localizedDescription)")
+        storeContainer.performBackgroundTask { context in
+            let imageEntity = ImageEntity(context: context)
+            guard let imageData = imageModel.image.pngData() else {
+                print("[DEBUG] No data from image")
+                return
+            }
+            imageEntity.path = imageModel.imagePath
+            imageEntity.imageData = imageData
+            do {
+                try context.save()
+            } catch {
+                print("[DEBUG] Context save image error: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -125,17 +132,20 @@ final class CoreDataManager: PersistanceManagerProtocol {
     }
     
     func clearImageModels() {
-        guard let imageEntities = try? storeContainer.viewContext.fetch(ImageEntity.fetchRequest()) else {
-            print("[DEBUG] CoreData imageEntity fetch error")
-            return
+        storeContainer.performBackgroundTask { context in
+            guard let imageEntities = try? context.fetch(ImageEntity.fetchRequest()) else {
+                print("[DEBUG] CoreData imageEntity fetch error")
+                return
+            }
+            for imageEntity in imageEntities {
+                context.delete(imageEntity)
+            }
+            do {
+                try context.save()
+            } catch {
+                print("[DEBUG] Context image clear save error: \(error.localizedDescription)")
+            }
         }
-        for imageEntity in imageEntities {
-            storeContainer.viewContext.delete(imageEntity)
-        }
-        do {
-            try storeContainer.viewContext.save()
-        } catch {
-            print("[DEBUG] Context image clear save error: \(error.localizedDescription)")
-        }
+        
     }
 }

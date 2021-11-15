@@ -181,10 +181,11 @@ class DetailsViewController: UIViewController {
         channelTitleLabel.text = presenter.videoModel.channelTitle
         
         presenter.getVideoWithDetails()
-        playerView.load(withVideoId: presenter.videoModel.videoID)
         
         addSubviews()
         addConstraints()
+        
+        playerView.load(withVideoId: presenter.videoModel.videoID)
     }
     
     // MARK: UI setup helpers functions -
