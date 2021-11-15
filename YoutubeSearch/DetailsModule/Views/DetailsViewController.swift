@@ -20,6 +20,12 @@ class DetailsViewController: UIViewController {
         return player
     }()
     
+    private let previewView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // TODO: subclasses of uiview/uilabel and delete text
     private let videoTitleLable: UILabel = {
         let label = UILabel()
@@ -192,7 +198,8 @@ class DetailsViewController: UIViewController {
     private func addSubviews() {
         view.addSubview(mainStackView)
         
-        mainStackView.addArrangedSubview(playerView)
+        mainStackView.addArrangedSubview(previewView)
+        previewView.addSubview(playerView)
         
         labelsStackView.addArrangedSubview(videoTitleLable)
         labelsStackView.addArrangedSubview(viewsCountLabel)
@@ -234,9 +241,13 @@ class DetailsViewController: UIViewController {
             channelStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
             
             
-            playerView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
-            playerView.heightAnchor.constraint(equalTo: playerView.widthAnchor, multiplier: 9/16)
+            previewView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
+            previewView.heightAnchor.constraint(equalTo: previewView.widthAnchor, multiplier: 9/16),
             
+            playerView.topAnchor.constraint(equalTo: previewView.topAnchor),
+            playerView.bottomAnchor.constraint(equalTo: previewView.bottomAnchor),
+            playerView.trailingAnchor.constraint(equalTo: previewView.trailingAnchor),
+            playerView.leadingAnchor.constraint(equalTo: previewView.leadingAnchor),
         ])
     }
     
