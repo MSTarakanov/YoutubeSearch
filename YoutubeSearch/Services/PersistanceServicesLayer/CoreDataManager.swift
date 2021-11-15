@@ -85,17 +85,19 @@ final class CoreDataManager: PersistanceManagerProtocol {
     
     // MARK: Images functions -
     func save(imageModel: ImageModel) {
-        let imageEntity = ImageEntity(context: storeContainer.viewContext)
-        imageEntity.path = imageModel.imagePath
-        guard let imageData = imageModel.image.pngData() else {
-            print("[DEBUG] No data from image")
-            return
-        }
-        imageEntity.imageData = imageData
-        do {
-            try storeContainer.viewContext.save()
-        } catch {
-            print("[DEBUG] Context save image error: \(error.localizedDescription)")
+        storeContainer.performBackgroundTask { context in
+            let imageEntity = ImageEntity(context: context)
+            guard let imageData = imageModel.image.pngData() else {
+                print("[DEBUG] No data from image")
+                return
+            }
+            imageEntity.path = imageModel.imagePath
+            imageEntity.imageData = imageData
+            do {
+                try context.save()
+            } catch {
+                print("[DEBUG] Context save image error: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -125,17 +127,20 @@ final class CoreDataManager: PersistanceManagerProtocol {
     }
     
     func clearImageModels() {
-        guard let imageEntities = try? storeContainer.viewContext.fetch(ImageEntity.fetchRequest()) else {
-            print("[DEBUG] CoreData imageEntity fetch error")
-            return
+        storeContainer.performBackgroundTask { context in
+            guard let imageEntities = try? context.fetch(ImageEntity.fetchRequest()) else {
+                print("[DEBUG] CoreData imageEntity fetch error")
+                return
+            }
+            for imageEntity in imageEntities {
+                context.delete(imageEntity)
+            }
+            do {
+                try context.save()
+            } catch {
+                print("[DEBUG] Context image clear save error: \(error.localizedDescription)")
+            }
         }
-        for imageEntity in imageEntities {
-            storeContainer.viewContext.delete(imageEntity)
-        }
-        do {
-            try storeContainer.viewContext.save()
-        } catch {
-            print("[DEBUG] Context image clear save error: \(error.localizedDescription)")
-        }
+        
     }
 }
