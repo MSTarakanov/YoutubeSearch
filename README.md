@@ -36,6 +36,7 @@ PODS:
 </kbd>
 <br/>
 <p>Detail view controller: (with connection/without connection)</p>
+<p>It will be reloaded in the 3rd gif, look!</p>
 <kbd>
   <br/>
   <img src="/readme_sources/details.jpg" width="30%"/>
