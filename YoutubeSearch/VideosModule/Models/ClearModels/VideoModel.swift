@@ -13,6 +13,7 @@ struct VideoModel {
     let channelTitle: String
     let channelID: String
     let defaultThumbnailsUrl: String
+    let createdAt: Date
     var details: DetailsModel?
     
     init?(item: SearchItem) {
@@ -29,6 +30,7 @@ struct VideoModel {
         self.title = title
         self.channelTitle = channelTitle
         self.channelID = channelID
+        self.createdAt = .now
         self.defaultThumbnailsUrl = defaultThumbnailsUrl
         self.details = nil
     }
@@ -39,7 +41,8 @@ struct VideoModel {
             let title = videoEntity.title,
             let channelTitle = videoEntity.channelTitle,
             let defaultThumbnailsUrl = videoEntity.defaultThumbnailsUrl,
-            let channelID = videoEntity.channelID
+            let channelID = videoEntity.channelID,
+            let createdAt = videoEntity.createdAt
         else {
             return nil
         }
@@ -47,6 +50,7 @@ struct VideoModel {
         self.title = title
         self.channelTitle = channelTitle
         self.channelID = channelID
+        self.createdAt = createdAt
         self.defaultThumbnailsUrl = defaultThumbnailsUrl
         self.details = nil
     }

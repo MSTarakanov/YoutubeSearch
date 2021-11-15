@@ -2,7 +2,7 @@
 //  VideoEntity+CoreDataClass.swift
 //  YoutubeSearch
 //
-//  Created by Максим Тараканов on 14.11.2021.
+//  Created by Максим Тараканов on 15.11.2021.
 //
 //
 

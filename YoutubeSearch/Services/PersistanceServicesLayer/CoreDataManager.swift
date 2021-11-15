@@ -37,6 +37,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
         }
         // CAUTION: Uncomment only for testing
         // self.clearImageModels()
+        // self.clearVideoModels()
     }
     
     // MARK: Videos functions -
@@ -55,7 +56,11 @@ final class CoreDataManager: PersistanceManagerProtocol {
     }
     
     func loadVideoModels() -> [VideoModel] {
-        guard let videoEntities = try? storeContainer.viewContext.fetch(VideoEntity.fetchRequest()) else {
+        let request = VideoEntity.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(VideoEntity.createdAt), ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        
+        guard let videoEntities = try? storeContainer.viewContext.fetch(request) else {
             print("[DEBUG] CoreData fetch error")
             return []
         }
@@ -86,6 +91,7 @@ final class CoreDataManager: PersistanceManagerProtocol {
         videoEntity.channelTitle = videoModel.channelTitle
         videoEntity.defaultThumbnailsUrl = videoModel.defaultThumbnailsUrl
         videoEntity.channelID = videoModel.channelID
+        videoEntity.createdAt = .now
     }
     
     // MARK: Images functions -
